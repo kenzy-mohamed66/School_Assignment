@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>ADD TASK</title>
+    </head>
+<body>
+   <h1>ADD THE TASK</h1>
+
+     <nav>
+        <strong>EduTask</strong> |
+        <a href="index.html">Dashboard</a> |
+        <a href="add-task.html">Add Task</a> |
+        <a href="view_created_task.html">View Created Tasks</a> |
+        Logged in as: <strong>Admin — Dr</strong> |
+        <a href="#">Logout</a>
+    </nav>
+
+  <br/>
+ 
+   
+    <p>Fill The Following Form To Add or Edit A Task</p>
+    <hr>
+
+    <form>
+    <label for="task_id">Task ID:</label>
+    <input type="text"  id="task_id" name="task_id"><br><br>
+
+    <label for="task_title">Task Title:</label>
+    <input type="text" id="task_title" name="task_title"><br><br>
+
+    <label for="teacher_name">Assigned Teacher:</label>
+    <input type="text" id="teacher_name" name="teacher_name"><br><br>
+
+    <label>Task Priority:</label>
+    <select id="priority" name="priority" required>
+            <option value="">-- Select Priority --</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+    </select><br><br>
+
+    <label for="description">Task Description:</label><br>
+    <textarea id="description" name="description" rows="5" cols="45"
+     placeholder="Enter task description here..." required></textarea><br><br>
+
+   <label for="admin_name">Admin Name:</label>
+   <input type="text" id="admin_name" name="admin_name" required><br><br>
+
+   <label for="status">Task Status:</label>
+   <select id="status" name="status" required>
+    <option value="">-- Select Status --</option>
+    <option value="pending">Pending</option>
+    <option value="in_progress">In Progress</option>
+    <option value="completed">Completed</option>
+   </select><br><br>
+   <hr>
+
+  <input type="submit" value="Submit"> 
+  <input type="reset" value="Clear Form"></input> 
+  <a href="index.html"><input type="button" value="Cancel"/></a>
+
+  </form>
+
+
+</body>
+</html>
