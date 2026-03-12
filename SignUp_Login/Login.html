@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+    <head>
+        <meta charset="UTF-8">
+        <title> Login </title>
+    </head>
+
+<body>
+
+    <h1>Login</h1>
+    <form action="#" method="post"> 
+        <!--Username-->
+        <div>
+            <label for="username"> Username: </label>
+            <br>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <!--Password-->
+        <div>
+            <label for="password"> Password: </label>
+            <br>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <!--User Role-->
+        <div>
+            <label for="login_role"> Login As: </label>
+            <br>
+            <select id="login_role" name="is_admin" required>
+                <option value="" disabled selected> Select Your Role </option>
+                <option value="true"> Admin </option>
+                <option value="false"> Teacher </option>
+            </select>
+        </div>
+
+        <br>
+
+        <button type="submit"> Login In </button>
+    </form>
+    <p>
+        Do not have an account?
+        <a href="index.html"> Sign up Here </a>
+    </p>
+
+</body>
+</html>
