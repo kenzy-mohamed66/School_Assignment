@@ -30,7 +30,8 @@ body{
 
 .inputs{
     border-bottom: 1px solid rgb(112, 102, 102); /* The thin white line from the design */
-    margin-bottom: 25px; /* Spacing between inputs */
+    margin-bottom: 15px; /* Spacing between inputs */
+    margin-top: 20px;
     padding: 5px 0; 
 }
 .inputs input{
