@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <title> Sign Up </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="Home-pageStyle.css">
         <link rel="stylesheet" href="../Global.css">
     </head>
@@ -11,28 +12,33 @@
 <body>
     <div class="main-container">
 
-        <div class="form"> 
+        <div class="form-box"> 
 
             <h1> Create An Account </h1>
+            
             <form action="../html/index.html" method="post">
 
                 <!--Username-->
                 <div class="inputs">
+                    <i class="fas fa-user"></i>   
                     <input type="text" id="username" name="username" placeholder="Username" required>
                 </div>
                 
                 <!--Email-->
                 <div class="inputs">
+                    <i class="fas fa-envelope"></i>
                     <input type="text" id="email" name="email" placeholder="Email" required>
                 </div>
 
                 <!--Password-->
                 <div class="inputs">
+                    <i class="fas fa-lock"></i>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
 
                 <!--Confirm password-->
                 <div class="inputs">
+                    <i class="fas fa-lock"></i>
                     <input type="password" id="confirm password" name="confirm password" placeholder="Confirm Password" required>
                 </div>
 
@@ -54,8 +60,13 @@
 
         </div>
 
-        <div class="image"> </div>
+        <div class="image-box"> </div>
+
     </div>
+
+</body>
+</html>
+
 <!-- <h1> Creat An Account </h1> -->
 <!--User Role-->
 <!-- <div>
@@ -67,5 +78,3 @@
         <option value="false"> Teacher </option>
     </select>
 </div> -->
-</body>
-</html>
