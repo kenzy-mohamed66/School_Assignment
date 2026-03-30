@@ -1,23 +1,43 @@
-body{
+body {
     font-family: sans-serif;
     background-image: url("Gradient.avif");
-    background-position: fixed;
+    background-attachment: fixed;
+    background-size: cover;
     color: rgb(241, 232, 232);
 }
-a{
-    color:#8750f7;
-    text-decoration: none;
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
 }
-a:hover{
+
+a {
+    color: #8750f7;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
     color: #ffffff;
     text-shadow: 0 0 8px #8750f7;
 }
-button{
-    background-color:linear-gradient(90deg,#8750f7, #a076f9);
+
+.main-btn, button:not(.login-page-btn) { 
+    background: linear-gradient(90deg, #8750f7, #a076f9); 
+    color: white;
+    padding: 5px 15px;
+    border: none;
     border-radius: 50px;
     cursor: pointer;
+    font-weight: bold;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(135, 80, 247, 0.2);
 }
-button:hover{
-    box-shadow: 0 0 15px #8750f7; 
-    transform: translateY(-2px);
+
+.main-btn:hover, button:not(.login-page-btn):hover {
+    box-shadow: 0 0 20px #8750f7; 
+    transform: translateY(-3px);
+    filter: brightness(1.1);
 }
