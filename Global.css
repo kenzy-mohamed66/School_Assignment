@@ -1,6 +1,7 @@
 body{
     font-family: sans-serif;
-    background-image: url("Gradient.avif"); 
+    background-image: url("Gradient.avif");
+    background-position: fixed;
     color: rgb(241, 232, 232);
 }
 a{
@@ -10,7 +11,6 @@ a{
 a:hover{
     color: #ffffff;
     text-shadow: 0 0 8px #8750f7;
-
 }
 button{
     background-color:linear-gradient(90deg,#8750f7, #a076f9);

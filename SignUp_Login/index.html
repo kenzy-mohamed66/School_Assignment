@@ -9,62 +9,63 @@
     </head>
 
 <body>
+    <div class="main-container">
 
-    <h1> Creat An Account </h1>
+        <div class="form"> 
 
-    <form action="..//html/index.html" method="post">
-        <!--Username-->
-        <div>
-            <label for="username"> Username: </label>
-            <br>
-            <input type="text" id="username" name="username" required>
+            <h1> Create An Account </h1>
+            <form action="../html/index.html" method="post">
+
+                <!--Username-->
+                <div class="inputs">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                
+                <!--Email-->
+                <div class="inputs">
+                    <input type="text" id="email" name="email" placeholder="Email" required>
+                </div>
+
+                <!--Password-->
+                <div class="inputs">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+
+                <!--Confirm password-->
+                <div class="inputs">
+                    <input type="password" id="confirm password" name="confirm password" placeholder="Confirm Password" required>
+                </div>
+
+                <br>
+
+                <!-- <button type="submit"> Sign Up </button> -->
+                <div class="buttons">
+                    <input class="btn" type="submit" formaction="..//html/index.html" value="Sign-up as Admin">
+                    <input class="btn" type="submit" formaction="../kenzy's tasks/teacher dashboard.html" value="Sign-up as Teacher">
+                </div>
+
+            </form>
+
+            <p class="link">
+                Already Have An Account?
+                <br>
+                <a href="Login.html"> Login Here </a>
+            </p>
+
         </div>
 
-        <!--Email-->
-        <div>
-            <label for="email"> Email: </label>
-            <br>
-            <input type="text" id="email" name="email" required>
-        </div>
-
-        <!--Password-->
-        <div>
-            <label for="password"> Password: </label>
-            <br>
-            <input type="password" id="password" name="password" required>
-        </div>
-
-        <!--Confirm password-->
-        <div>
-            <label for="confirm password"> Confirm Password: </label>
-            <br>
-            <input type="password" id="confirm password" name="confirm password" required>
-        </div>
-
-        <!--User Role-->
-        <!-- <div>
-            <label for="signup_role"> Register as: </label>
-            <br>
-            <select id="signup_role" name="is_admin" required>
-                <option value="" disabled selected> Select Your Role </option>
-                <option value="true"> Admin </option>
-                <option value="false"> Teacher </option>
-            </select>
-        </div> -->
-
-        <br>
-
-        <!-- <button type="submit"> Sign Up </button> -->
-        <input type="submit" formaction="..//html/index.html" value="Sign-up as Admin">
-
-        <input type="submit" formaction="..//kenzy's tasks/teacher dashboard.html" value="Sign-up as Teacher">
-    </form>
-
-    <p>
-        Already Have An Account?
-        <br>
-        <a href="Login.html"> Login Here </a>
-    </p>
-
+        <div class="image"> </div>
+    </div>
+<!-- <h1> Creat An Account </h1> -->
+<!--User Role-->
+<!-- <div>
+    <label for="signup_role"> Register as: </label>
+    <br>
+    <select id="signup_role" name="is_admin" required>
+        <option value="" disabled selected> Select Your Role </option>
+        <option value="true"> Admin </option>
+        <option value="false"> Teacher </option>
+    </select>
+</div> -->
 </body>
 </html>
