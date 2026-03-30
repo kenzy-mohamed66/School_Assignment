@@ -10,52 +10,52 @@
 
 <body>
     <div class="main-container">
+
         <div class="form"> 
-            <h1> Welcome To Our School Task Manager </h1>
-            <p> Please Sign Up To Create An Account </p>
+
+            <h1> Create An Account </h1>
             <form action="../html/index.html" method="post">
+
                 <!--Username-->
-                <div>
-                    <label for="username"> Username: </label>
-                    <br>
-                    <input type="text" id="username" name="username" required>
+                <div class="inputs">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
                 </div>
                 
                 <!--Email-->
-                <div>
-                    <label for="email"> Email: </label>
-                    <br>
-                    <input type="text" id="email" name="email" required>
+                <div class="inputs">
+                    <input type="text" id="email" name="email" placeholder="Email" required>
                 </div>
 
                 <!--Password-->
-                <div>
-                    <label for="password"> Password: </label>
-                    <br>
-                    <input type="password" id="password" name="password" required>
+                <div class="inputs">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
 
                 <!--Confirm password-->
-                <div>
-                    <label for="confirm password"> Confirm Password: </label>
-                    <br>
-                    <input type="password" id="confirm password" name="confirm password" required>
+                <div class="inputs">
+                    <input type="password" id="confirm password" name="confirm password" placeholder="Confirm Password" required>
                 </div>
+
                 <br>
+
                 <!-- <button type="submit"> Sign Up </button> -->
-                <div>
-                    <input type="submit" formaction="..//html/index.html" value="Sign-up as Admin">
-                    <input type="submit" formaction="../kenzy's tasks/teacher dashboard.html" value="Sign-up as Teacher">
+                <div class="buttons">
+                    <input class="btn" type="submit" formaction="..//html/index.html" value="Sign-up as Admin">
+                    <input class="btn" type="submit" formaction="../kenzy's tasks/teacher dashboard.html" value="Sign-up as Teacher">
                 </div>
 
             </form>
 
-            <p>
+            <p class="link">
                 Already Have An Account?
                 <br>
                 <a href="Login.html"> Login Here </a>
             </p>
-    
+
+        </div>
+
+        <div class="image"> </div>
+    </div>
 <!-- <h1> Creat An Account </h1> -->
 <!--User Role-->
 <!-- <div>
@@ -67,6 +67,5 @@
         <option value="false"> Teacher </option>
     </select>
 </div> -->
-
 </body>
 </html>
