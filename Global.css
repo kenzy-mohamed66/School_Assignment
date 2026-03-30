@@ -1,5 +1,23 @@
 body{
     font-family: sans-serif;
     background-image: url("Gradient.avif"); 
-    color: white;
+    color: rgb(241, 232, 232);
+}
+a{
+    color:#8750f7;
+    text-decoration: none;
+}
+a:hover{
+    color: #ffffff;
+    text-shadow: 0 0 8px #8750f7;
+
+}
+button{
+    background-color:linear-gradient(90deg,#8750f7, #a076f9);
+    border-radius: 50px;
+    cursor: pointer;
+}
+button:hover{
+    box-shadow: 0 0 15px #8750f7; 
+    transform: translateY(-2px);
 }
