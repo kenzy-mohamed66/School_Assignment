@@ -4,6 +4,14 @@
     box-sizing: border-box; /* Ensures padding/border are included in the total width/height */
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0) inset !important; /* Forces background to stay transparent */
+    -webkit-text-fill-color: white !important; /* Ensures the typed text stays white */
+    transition: background-color 5000s ease-in-out 0s; /* Delays the browser's color change indefinitely */
+}
+
 body {
     font-family: sans-serif;
    /* background-image: url("./Photos/Gradient.avif");*/
