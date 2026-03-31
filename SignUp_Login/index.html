@@ -21,33 +21,42 @@
                 <!--Username-->
                 <div class="inputs">
                     <i class="fas fa-user"></i>   
-                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <input type="text" id="username" placeholder="Username" required>
                 </div>
                 
                 <!--Email-->
                 <div class="inputs">
                     <i class="fas fa-envelope"></i>
-                    <input type="text" id="email" name="email" placeholder="Email" required>
+                    <input type="text" id="email" placeholder="Email" required>
                 </div>
 
                 <!--Password-->
                 <div class="inputs">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <i class="fas fa-eye"></i>
+                    <input type="password" id="password" placeholder="Password" required>
                 </div>
 
                 <!--Confirm password-->
                 <div class="inputs">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="confirm password" name="confirm password" placeholder="Confirm Password" required>
+                    <i class="fas fa-eye"></i>
+                    <input type="password" id="confirm password" placeholder="Confirm Password" required>
                 </div>
 
                 <br>
 
-                <!-- <button type="submit"> Sign Up </button> -->
+                <!--User Role-->
+                <div class="inputs">
+                    <i class="fas fa-users"></i> 
+                    <select id="signup_role" required>
+                        <option value="" disabled selected> Select Your Role </option>
+                        <option value="admin"> Admin </option>
+                        <option value="teacher"> Teacher </option>
+                    </select>
+                </div>
+
+                
                 <div class="buttons">
-                    <input class="btn" type="submit" formaction="..//html/index.html" value="Sign-up as Admin">
-                    <input class="btn" type="submit" formaction="../kenzy's tasks/teacher dashboard.html" value="Sign-up as Teacher">
+                    <input class="btn" type="submit" value="Sign Up">
                 </div>
 
             </form>
@@ -64,17 +73,7 @@
 
     </div>
 
+<script src="Sign-Login.js"></script>
+
 </body>
 </html>
-
-<!-- <h1> Creat An Account </h1> -->
-<!--User Role-->
-<!-- <div>
-    <label for="signup_role"> Register as: </label>
-    <br>
-    <select id="signup_role" name="is_admin" required>
-        <option value="" disabled selected> Select Your Role </option>
-        <option value="true"> Admin </option>
-        <option value="false"> Teacher </option>
-    </select>
-</div> -->
