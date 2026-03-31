@@ -1,0 +1,49 @@
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding/border are included in the total width/height */
+}
+
+body {
+    font-family: sans-serif;
+    background-image: url("./Photos/Gradient.avif");
+    background-attachment: fixed;
+    background-size: cover;
+    color: rgb(241, 232, 232);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+a {
+    color: #8750f7;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #8750f7;
+}
+
+.main-btn, button{ 
+    background: linear-gradient(90deg, #8750f7, #a076f9); 
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(135, 80, 247, 0.2);
+}
+
+.main-btn:hover, button:hover {
+    box-shadow: 0 0 20px #8750f7; 
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+}

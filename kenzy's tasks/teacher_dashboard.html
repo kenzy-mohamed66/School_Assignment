@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+           <meta charset="UTF-8">
+       <title>teacher dashboard</title>
+       <link rel ="stylesheet" href ="../global.css">
+              <link rel ="stylesheet" href ="./style.css">
+
+    </head>
+    <body>
+        
+   <nav>
+  <span class="nav-brand">EduTask</span>
+  <div class="nav-links">
+    <a href="teacher_dashboard.html" class="active">Dashboard</a>
+    <a href="task_details.html">Task Details</a>
+    <a href="../Completed Tasks/assignment.html">Completed Tasks</a>
+  </div>
+  <div class="nav-right">
+    Logged in as: <strong>Teacher: Dr. ...</strong>
+    <a href="../SignUp_Login/Login.html">Logout</a>
+  </div>
+</nav>
+ 
+<main>
+  <div class="page-header">
+    <h1>Welcome, Teacher Name</h1>
+    <p>Manage and track all assigned tasks below.</p>
+  </div>
+  <hr>
+ 
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <h3>Filter</h3>
+    <div class="filter-group">
+      <label for="priority">Priority:</label>
+      <select id="priority" onchange="filterTable()">
+        <option value="all">All</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="Subjects">Subject:</label>
+      <select id="Subjects" onchange="filterTable()">
+        <option value="all">All</option>
+        <option value="Math">Math</option>
+        <option value="Physics">Physics</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Biology">Biology</option>
+        <option value="French">French</option>
+        <option value="German">German</option>
+        <option value="Italian">Italian</option>
+        <option value="Arabic">Arabic</option>
+        <option value="English">English</option>
+      </select>
+    </div>
+  </div>
+ 
+  <!-- Tasks Table -->
+  <div class="table-wrap">
+    <table id="taskTable">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-subject="Math" data-priority="High">
+          <td class="subject-name">Math</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('Math')">View Details</button></td>
+        </tr>
+        <tr data-subject="Physics" data-priority="High">
+          <td class="subject-name">Physics</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('Physics')">View Details</button></td>
+        </tr>
+        <tr data-subject="Chemistry" data-priority="High">
+          <td class="subject-name">Chemistry</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('Chemistry')">View Details</button></td>
+        </tr>
+        <tr data-subject="Biology" data-priority="High">
+          <td class="subject-name">Biology</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('Biology')">View Details</button></td>
+        </tr>
+        <tr data-subject="French" data-priority="Medium">
+          <td class="subject-name">French</td>
+          <td><span class="badge badge-medium">Medium</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('French')">View Details</button></td>
+        </tr>
+        <tr data-subject="German" data-priority="High">
+          <td class="subject-name">German</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('German')">View Details</button></td>
+        </tr>
+        <tr data-subject="Italian" data-priority="High">
+          <td class="subject-name">Italian</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('Italian')">View Details</button></td>
+        </tr>
+        <tr data-subject="Arabic" data-priority="High">
+          <td class="subject-name">Arabic</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('Arabic')">View Details</button></td>
+        </tr>
+        <tr data-subject="English" data-priority="High">
+          <td class="subject-name">English</td>
+          <td><span class="badge badge-high">High</span></td>
+          <td><span class="badge badge-progress">In Progress</span></td>
+          <td><button class="btn-details" onclick="openModal('English')">View Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+ 
+<!-- Shared Modal -->
+<div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-subject-label">Task Details</div>
+        <h2 id="modal-title"></h2>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-row">
+        <span class="modal-label">Priority</span>
+        <span class="modal-value" id="modal-priority"></span>
+      </div>
+      <div class="modal-row">
+        <span class="modal-label">Status</span>
+        <span class="modal-value" id="modal-status"></span>
+      </div>
+      <div class="modal-row">
+        <span class="modal-label">Assigned To</span>
+        <span class="modal-value" id="modal-student"></span>
+      </div>
+      <div class="modal-row">
+        <span class="modal-label">Description</span>
+      </div>
+      <div class="modal-desc" id="modal-desc"></div>
+    </div>
+    <div class="modal-footer">
+      <label>
+        <input type="checkbox" id="modal-complete"> Mark as Completed
+      </label>
+      <button class="btn-save" onclick="saveStatus()">Save Status</button>
+    </div>
+  </div>
+</div>
+ 
+<script src="motion.js"></script>
+</body>
+</html>
+ 

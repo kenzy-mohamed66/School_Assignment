@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+    <head>
+        <meta charset="UTF-8">
+        <title> Login </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="Home-pageStyle.css">
+        <link rel="stylesheet" href="../Global.css">
+    </head>
+
+<body>
+    <div class="main-container">
+
+        <div class="form-box">
+
+            <h1> Login </h1>
+
+            <form action="..//html/index.html" method="post"> 
+                <!--Username-->
+                <div class="inputs">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Username" required>
+                </div>
+
+                <!--Password-->
+                <div class="inputs">
+                <i class="fas fa-eye"></i>
+                <input type="password" id="password" placeholder="Password" required>
+                </div>
+
+                <br>
+
+                <!--User Role-->
+                <div class="inputs">
+                    <i class="fas fa-users"></i>
+                    <select id="login_role" required>
+                        <option value="" disabled selected> Select Your Role </option>
+                        <option value="admin"> Admin </option>
+                        <option value="teacher"> Teacher </option>
+                    </select>
+                </div>
+                
+                <div class="buttons">
+                    <input class="btn" type="submit" value="Login">
+                </div>
+
+            </form>
+
+            <p class="link">
+                Do not have an account?
+                <br>
+                <a href="index.html"> Sign up Here </a>
+            </p>
+
+        </div>
+
+        <div class="image-box"> </div>
+
+    </div>
+
+<script src="Sign-Login.js"></script>
+
+</body>
+</html>
