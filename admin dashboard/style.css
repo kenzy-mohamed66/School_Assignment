@@ -87,6 +87,7 @@ body {
 
   border-color: rgba(196, 181, 253, 0.5);
 }
+/*All the above is the nav*/
 
 .before-greet{
     font-size: 14px;
@@ -96,6 +97,7 @@ body {
     letter-spacing: 1.5px;
    
 }
+
 .greet {
   font-size: 52px;
   font-weight: 800;
