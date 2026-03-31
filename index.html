@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN DASHBOARD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+ 
+
+ <nav class="nav">
+  <strong class="logo">EduTask</strong>|
+
+  <a class="middle" href="index.html">Dashboard</a>
+  <a class="middle" href="add-task.html">Add Task</a>
+  <a class="middle" href="edit-task.html">Edit Task</a>
+  <a class="middle" href="view_created_task.html">View Created Tasks</a>
+  
+
+  <span class="user-info">
+    <a class="log" href="#">Logout</a>
+  </span>
+</nav>
+
+
+
+  
+ <h6 class="before-greet">ADMIN PANEL</h6>
+ <h1 class="greet">Welcome Back,<br>
+    Admin Name</h1>
+<div class="dashboard">
+<div class="overview-box">
+  <h2>System Overview</h2>
+  <ul>
+    <li>👩‍🎓<span class="num">320</span><span class="label">Total Students</span></li>
+    <li>👨‍🏫<span class="num">25</span><span class="label">Total Teachers</span></li>
+    <li>📚<span class="num">12</span><span class="label">Total Courses</span></li>
+    <li>📝<span class="num">10</span><span class="label">Total Assignments</span></li>
+  </ul>
+</div>
+
+
+<div class="task-overview" >
+<h2 >Task Overview</h2>
+<ul>
+    <li><span class="numb">6</span><span class="task">Completed Tasks</span></li>
+    <li><span class="numb">3</span><span class="task">Pending Tasks</span></li>
+    <li><span class="numb">1</span><span class="task">Overdue Tasks</span></li>
+    <li><span class="numb">60%
+    </span > <span class="task">Completion Rate</span></li>
+    <li>
+       <span class="task"> Progress</span> 
+       <span class="inside">6/10 Tasks</span>
+        <progress value="6" max="10">70%</progress>
+    </li>
+</ul>
+</div>
+
+<div>
+<h2>Task Status Overview</h2>
+
+<table class="the-table" border="1" cellpadding="8" cellspacing="0">
+<tr>
+    <th >Course</th>
+    <th >Status</th>
+</tr>
+
+<tr>
+    <td >Math</td>
+    <td>Completed ✅</td>
+</tr>
+<tr>
+    <td>Chemistry</td>
+    <td>Pending ⏳</td>
+</tr>
+<tr>
+    <td>Physics</td>
+    <td>Completed ✅</td>
+</tr>
+<tr>
+    <td>French</td>
+    <td>Overdue ⚠️</td>
+</tr>
+<tr>
+    <td>Biology</td>
+    <td>Pending ⏳</td>
+</tr>
+</table>
+</div>
+</div>
+
+<script>
+  document.querySelectorAll('.middle').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+
+
+ 
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>ADD TASK</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+<nav class="nav">
+  <strong class="logo">EduTask</strong>|
+  <a class="middle" href="index.html">Dashboard</a>
+  <a class="middle" href="add-task.html">Add Task</a>
+  <a class="middle" href="edit-task.html">Edit Task</a>
+  <a class="middle" href="view_created_task.html">View Created Tasks</a>
+  <span class="user-info">
+    <a class="log" href="#">Logout</a>
+  </span>
+</nav>
+  
+ 
+   
+<h1 class="head-h1"> Add Task</h1>
+    
+<div class="form-container">
+
+    <form>
+    <h1 class="h1">FILL THE FOLLOWING FORM</h1>
+    <label class="l2" for="task_id">Task ID</label>
+    <input class="form-input" type="text"  id="task_id" name="task_id">
+
+    <label class="l2" for="task_title">Task Title</label>
+    <input class="form-input" type="text" id="task_title" name="task_title">
+
+    <label class="l2" for="teacher_name">Assigned Teacher</label>
+    <input class="form-input" type="text" id="teacher_name" name="teacher_name">
+
+    <label class="l2" for="priority">Task Priority</label>
+    <select class="select" id="priority" name="priority" required>
+            <option value="">-- Select Priority --</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+    </select>
+
+    <label class="l2">Due Date</label>
+    <input  class=" form-input" date value="2026-04-02">
+
+    <label class="l2" for="description">Task Description</label>
+    <textarea class="form-input" id="description" name="description" rows="5" cols="45"
+     placeholder="Enter task description here..." required></textarea>
+
+   <label class="l2" for="admin_name">Admin Name</label>
+   <input class="form-input" type="text" id="admin_name" name="admin_name" required>
+
+    <label class="l2" for="status">Task Status</label>
+    <select class="select" id="status" name="status" required>
+            <option value="">-- Select Status --</option>
+            <option value="pending">Pending</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+    </select>
+   <hr>
+
+   <input type="submit" value="Submit"></input>
+   <input type="reset" value="Clear Form"></input> 
+   <a href="index.html"><input type="button" value="Cancel"/></a>
+
+   </form>
+</div>
+
+  <script>
+  document.querySelectorAll('.middle').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+
+
+</body>
+</html>

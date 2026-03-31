@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lan="en">
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  <title>Edit Task</title>
+  </head>
+  <body>
+      <nav class="nav">
+  <strong class="logo">EduTask</strong>|
+
+  <a class="middle" href="index.html">Dashboard</a>
+  <a class="middle" href="add-task.html">Add Task</a>
+  <a class="middle" href="edit-task.html">Edit Task</a>
+  <a class="middle" href="view_created_task.html">View Created Tasks</a>
+  
+
+  <span class="user-info">
+    <a class="log" href="#">Logout</a>
+  </span>
+</nav>
+<h1 class="head-h1"> Edit Task</h1>
+  <div class="form-container">
+    
+
+    <form>
+         <h1 class="h1">FILL THE FOLLOWING FORM</h1>
+      <label class="l2">Task Title</label>
+      <input class="form-input" type="text" value="Math Homework">
+
+      <label class="l2">Description</label>
+      <textarea class="form-input">Finish exercises 1–10 from chapter 5</textarea>
+
+      <label class="l2">Due Date</label>
+      <input  class=" form-input" date value="2026-04-02">
+
+      <label class="l2">Status</label>
+      <select class="select">
+        <option>Pending</option>
+        <option>In Progress</option>
+        <option>Done</option>
+      </select>
+
+    <input type="submit" value="Submit"> 
+  <input type="reset" value="Clear Form"></input> 
+  <a href="index.html"><input type="button" value="Cancel"/></a>
+    </form>
+  </div>
+   <script>
+  document.querySelectorAll('.middle').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+</body>
+
+
+
+</html>
