@@ -6,7 +6,8 @@
 
 body {
     font-family: sans-serif;
-    background-image: url("./Photos/Gradient.avif");
+   /* background-image: url("./Photos/Gradient.avif");*/
+    background: #0f0b1a;
     background-attachment: fixed;
     background-size: cover;
     color: rgb(241, 232, 232);
