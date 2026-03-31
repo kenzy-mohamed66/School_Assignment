@@ -1,27 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background: radial-gradient(circle at top left, #0a2d2d, #050505);
-    color: white;
-    min-height: 100vh;
-    background-image: url("../Gradient.avif");
-    background-attachment: fixed;
-    background-size: cover;
-}
-
-/* Navbar */
-nav {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
-}
-
 .logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; }
 
 .nav-links { display: flex; list-style: none; }
