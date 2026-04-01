@@ -1,0 +1,300 @@
+body {
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at center, #0d0d0d, #2a2a2a);
+  margin: 0;
+  padding: 20px;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Top Navigation Bar */
+body > nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 30px;
+  font-size: 14px;
+  width: fit-content;
+}
+
+body > nav a {
+  color: #8750f7;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+body > nav a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px #8750f7;
+}
+
+body > nav strong {
+  color: white;
+  font-weight: bold;
+}
+
+body > hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  margin: 0 0 20px 0;
+  display: none;
+}
+
+/* The outer container that holds sidebar + main */
+.page {
+  display: flex;
+  background: rgba(67, 71, 71, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+
+/* ============================================
+   SIDEBAR (left column)
+   ============================================ */
+
+.sidebar {
+  width: 200px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+  padding: 24px 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.back-link {
+  color: #a076f9;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* The circle that shows the user's initials */
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #6a5acd, #9370db);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  box-shadow: 0 4px 10px rgba(106, 90, 205, 0.3);
+}
+
+.avatar span {
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* Name shown below the avatar */
+#sidebar-name {
+  text-align: center;
+  font-size: 15px;
+  margin: 0 0 4px 0;
+  color: white;
+}
+
+/* Job title shown below the name */
+#sidebar-title {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 24px 0;
+}
+
+/* Navigation links */
+.nav-link {
+  display: block;
+  padding: 8px 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+/* The currently selected nav link */
+.nav-link.active {
+  background: linear-gradient(90deg, #6a5acd, #9370db);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.4);
+}
+
+
+/* ============================================
+   MAIN PANEL (right column)
+   ============================================ */
+
+.main {
+  flex: 1;
+  padding: 28px 30px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Section headings like "Personal Information" */
+.section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 16px;
+}
+
+/* Horizontal line between sections */
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 24px 0;
+}
+
+/* A group with a label and an input below it */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 13px;
+  background: transparent;
+  outline: none;
+  color: white;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Highlight the input when the user clicks on it */
+.form-group input:focus {
+  border-color: #6a5acd;
+  box-shadow: 0 0 10px rgba(106, 90, 205, 0.5);
+}
+
+/* Two inputs side by side */
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row .form-group {
+  flex: 1;   /* each group takes equal width */
+}
+
+
+/* ============================================
+   ROLE CARDS
+   ============================================ */
+
+.role-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.role-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* When a role card is selected, highlight it */
+.role-card.selected {
+  border-color: #a076f9;
+  background: rgba(135, 80, 247, 0.1);
+  box-shadow: 0 0 15px rgba(135, 80, 247, 0.3);
+}
+
+.role-emoji {
+  font-size: 22px;
+}
+
+.role-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.role-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+
+/* ============================================
+   SAVE BUTTON
+   ============================================ */
+
+.save-btn {
+  width: 100%;
+  padding: 11px;
+  background: linear-gradient(90deg, #8750f7, #a076f9);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  box-shadow: 0 0 15px #8750f7;
+  transform: translateY(-2px);
+}
+
+
+/* ============================================
+   SUCCESS MESSAGE
+   ============================================ */
+
+#success-msg {
+  display: none;           /* hidden by default */
+  text-align: center;
+  margin-top: 12px;
+  color: #a076f9;
+  font-size: 13px;
+}

@@ -53,7 +53,7 @@ input, textarea {
 
 .info-item {
     display: flex;
-    flex-direction: row; /* التأكد إن الأيقونة قبل الكلام من الشمال */
+    flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
     gap: 15px;

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="Global.css" />
+    <link rel="stylesheet" href="Profile.css" />
+  </head>
+  <body>
+    <nav>
+      <strong>EduTask</strong> |
+      <a href="../kenzy's tasks/teacher dashboard.html">Dashboard</a> |
+      <a href="../kenzy's tasks/task_details.html">Task Details </a> |
+      <a href="../assignment.html">Completed Tasks</a> | Logged in as:
+      <strong>Admin — Dr</strong> |
+      <a href="../SignUp_Login/Login.html">Logout</a>
+    </nav>
+     <hr />
+
+    <br />
+
+    <div class="page">
+      <!-- ========================
+         LEFT SIDE: Sidebar
+    ========================= -->
+      <div class="sidebar">
+        <p class="back-link">← Back</p>
+
+        <!-- Avatar circle shows the user's initials -->
+        <div class="avatar">
+          <span id="initials">NT</span>
+        </div>
+
+        <!-- These update live when the user types in the form -->
+        <h2 id="sidebar-name">Nora Tsunoda</h2>
+        <p id="sidebar-title">Security Lead</p>
+
+        <!-- Navigation links -->
+        <nav>
+          <a class="nav-link active">Profile</a>
+          <a class="nav-link">Tasks</a>
+          <a class="nav-link">Calendar</a>
+          <a class="nav-link">Files</a>
+        </nav>
+      </div>
+
+      <!-- ========================
+         RIGHT SIDE: Main Form
+    ========================= -->
+      <div class="main">
+        <!-- Section 1: Personal Info -->
+        <h3 class="section-title">Personal Information</h3>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="fname" value="Nora" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="lname" value="Tsunoda" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" value="nora@workspace.io" />
+        </div>
+
+        <div class="form-group">
+          <label>Job Title</label>
+          <input type="text" id="jobtitle" value="Security Lead" />
+        </div>
+
+        <hr />
+
+        <!-- Section 2: Password -->
+        <h3 class="section-title">Change Password</h3>
+
+        <div class="form-group">
+          <label>Current Password</label>
+          <input type="password" id="cur-pass" value="12345678" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>New Password</label>
+            <input
+              type="password"
+              id="new-pass"
+              placeholder="Min. 8 characters"
+            />
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              id="con-pass"
+              placeholder="Repeat password"
+            />
+          </div>
+        </div>
+
+        <hr />
+
+        <!-- Section 3: Role -->
+        <h3 class="section-title">Role</h3>
+
+        <div class="role-row">
+          <div class="role-card" id="card-admin">
+            <span class="role-emoji">🛡️</span>
+            <div>
+              <p class="role-name">Admin</p>
+              <p class="role-desc">Full access</p>
+            </div>
+          </div>
+
+          <div class="role-card selected" id="card-teacher">
+            <span class="role-emoji">🎓</span>
+            <div>
+              <p class="role-name">Teacher</p>
+              <p class="role-desc">Manage content</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <button class="save-btn">Save Changes</button>
+
+        <!-- Success message — hidden until the user clicks Save -->
+        <p id="success-msg">✓ Profile saved successfully!</p>
+      </div>
+    </div>
+
+    <script src="Profile.js"></script>
+  </body>
+</html>
