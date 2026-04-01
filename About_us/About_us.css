@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    line-height: 1.6;
+    background-image: linear-gradient(to bottom, #2a142d 50%, #49264F, #66356E);
+}
+
+/* Header */
+header {
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+header h1 {
+    font-weight: 800;
+}
+
+h3 {
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
+
+ul li {
+    list-style-type: circle;
+}
+
+/* ul li::before {
+    content: "";
+    background-color: blueviolet;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: -15px;
+    margin-bottom: 20px;
+} */
+
+
+span {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: white;
+}
+
+/* Sections */
+section {
+    background-color: white;
+    color: blueviolet;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h2,
+h3 {
+    color: blueviolet;
+}
+
+/* List */
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    color: white;
+}
+
+/* Horizontal line */
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    width: 80%;
+}
+
+a.email {
+    color: blueviolet;
+}
