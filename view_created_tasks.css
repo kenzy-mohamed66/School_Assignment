@@ -2,9 +2,14 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+h1{
+    text-align:center;
+    margin:15px;
+}
+
 /* Container */
 .table-container {
-    margin: 2rem;
+     margin: 0 2rem 2rem; 
     border-radius: 20px;
 }
 
