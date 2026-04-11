@@ -23,7 +23,7 @@
   color: rgb(255, 255, 255);
   margin-bottom: 4px;
 }
-.nav-brand {
+/* .nav-brand {
   font-size: 1.35rem;
   color: #fff;
   margin-right: 28px;
@@ -62,7 +62,7 @@
   border-radius: 7px;
   transition: background 0.18s;
 }
-.nav-right a:hover { background: rgba(79,110,247,0.28); }
+.nav-right a:hover { background: rgba(79,110,247,0.28); } */
 
 /* ── LAYOUT ── */
 main { max-width: 980px; margin: 0 auto; padding: 40px 24px 60px; }

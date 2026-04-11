@@ -1,7 +1,7 @@
 body{ 
     display: flex;
-    justify-content: center; /* Centers the card horizontally */
-    align-items: center; /* Centers the card vertically */
+    justify-content: center;
+    align-items: center;
     text-align: center;
     min-height: 100vh;
     margin: 0;
