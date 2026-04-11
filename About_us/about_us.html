@@ -6,6 +6,9 @@
     <title>About Us</title>
     <link rel="stylesheet" href="../Global.css" />
     <link rel="stylesheet" href="./About_us.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,13 +20,17 @@
 
     <!-- Navbar -->
     <nav>
-        <a href="index.html">Home</a> |
-        <a href="tasks.html">Tasks</a> |
-        <a href="about.html">About Us</a> |
-        <a href="login.html">Login</a>
+         <strong>EduTask</strong> 
+    <a href="../admin dashboard/index.html">Dashboard</a> 
+    <a href="../admin dashboard/add-task.html">Add Task</a> 
+    <a href="../view_created_task.html">View Created Tasks</a> 
+    Logged in as: <strong>Admin — Dr</strong> 
+    <a href="..//SignUp_Login/Login.html">Logout</a>
+    <a href="../Contact Us Page/Contact_Us.html">Contact Us </a>
+    <a href="../About_us/about_us.html">About_us</a>
+
     </nav>
 
-    <span></span>
     <!-- About Section -->
     <section>
         <h3>About Us</h3>
@@ -38,7 +45,6 @@
         </p>
     </section>
 
-    <span></span>
     <!-- Mission Section -->
     <section>
         <h3>Our Mission</h3>
@@ -48,13 +54,11 @@
         </p>
     </section>
 
-    <span></span>
-
     <!-- Team Section -->
     <section>
         <h3>Our Team</h3>
         <ul>
-            <li>Adham< Amr /li>
+            <li>Adham Amr</li>
             <li>Mariam Mohammed</li>
             <li>Kenzy Mohammed</li>
             <li>Jana Mohammed</li>
@@ -63,7 +67,6 @@
         </ul>
     </section>
 
-    <span></span>
 
     <!-- Contact Section -->
     <section>
@@ -71,13 +74,26 @@
         <p>Email: <a class="email" href="mailto:edutask@gmail.com">edutask@gmail.com</a></p>
     </section>
 
-    <hr>
+    <section class="comment-section">
+            <h3>Comment</h3>
+            <form id = "commentForm">
+                <div class="input-group">
+                    <label></label>
+                    <textarea id = "commentInput" rows="5" placeholder="Write your comment..."></textarea>
+                </div>
+                 <button type="submit">Send</button>
+            </form>
+           <div id="commentsList"></div>
+        </section>
 
     <!-- Footer -->
     <footer>
         <p>© 2026 EduTask. All rights reserved.</p>
     </footer>
 
+    <script src="./about_us.js"></script>
+
+   
 </body>
 
 </html>
