@@ -2,13 +2,12 @@
     margin: 0;
     font-family: "Poppins", sans-serif;
     line-height: 1.6;
-} */
 
 /* Header */
 header {
-    color: white;
     text-align: center;
     padding: 15px;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
 }
 
 header h1 {
@@ -28,8 +27,8 @@ ul li {
 
 /* Sections */
 section {
-    background-color: white;
-    color: blueviolet;
+    background: rgba(51, 14, 83, 0.4);
+    color:rgba(237, 233, 254, 0.6) ;
     margin: 20px auto;
     padding: 20px;
     width: 80%;
@@ -40,7 +39,7 @@ section {
 /* Headings */
 h2,
 h3 {
-    color: blueviolet;
+    color: white
 }
 
 /* List */
@@ -53,7 +52,7 @@ ul {
 footer {
     text-align: center;
     padding: 15px;
-    color: white;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
 }
 
 /* Horizontal line */
