@@ -10,14 +10,26 @@
 
 .container {
     display: flex;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 50px auto;
     gap: 50px;
     padding: 20px;
-    text-align: left; 
+    text-align: left;
 }
 
-.contact-form, .contact-info { flex: 1; min-width: 300px; }
+.contact-form {
+    flex: 2;
+    min-width: 360px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.contact-form form {
+    width: 100%;
+}
 
 /* Form Styling */
 .input-group { margin-bottom: 20px; }

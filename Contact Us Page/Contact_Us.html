@@ -12,46 +12,71 @@
     />
   </head>
   <body>
+    <nav class="nav">
+      <strong class="logo">EduTask</strong> |
+      <a class="middle" href="../admin dashboard/index.html">Dashboard</a>
+      <a class="middle" href="../admin dashboard/add-task.html">Add Task</a>
+      <a class="middle" href="../admin dashboard/edit-task.html">Edit Task</a>
+      <a class="middle" href="../admin dashboard/view_created_task.html"
+        >View Created Tasks</a
+      >
+      <a class="middle" href="../HOME_PAGE/HOME.html">Home</a>
+      <a class="middle" href="Contact_Us.html"> Contact </a>
+      <a class="middle" href="../About_us/about_us.html">About Us</a>
+      <a class="middle" href="../Profile Page/Profile.html">profile</a>
 
-  <nav class="nav">
-    <strong class="logo">EduTask</strong> |
-    <a class="middle" href="../admin dashboard/index.html">Dashboard</a> 
-    <a class="middle" href="../admin dashboard/add-task.html">Add Task</a> 
-    <a class="middle" href="../admin dashboard/edit-task.html">Edit Task</a>
-    <a class="middle" href="../admin dashboard/view_created_task.html">View Created Tasks</a> 
-    <a class="middle" href="../HOME_PAGE/HOME.html">Home</a>
-    <a class="middle" href="Contact_Us.html"> Contact </a>
-    <a class="middle" href="../About_us/about_us.html">About Us</a>
-    <a class="middle" href="../Profile Page/Profile.html">profile</a>
-
-    <span class="user-info">
-      <a class="log" href="../SignUp_Login/Login.html">Logout</a>
-    </span>
-  </nav>
+      <span class="user-info">
+        <a class="log" href="../SignUp_Login/Login.html">Logout</a>
+      </span>
+    </nav>
 
     <section class="contact-section">
       <div class="container">
         <div class="contact-form">
           <form>
             <div class="input-group">
-              <label>Name</label>
-              <input type="text" placeholder="Your Name" />
+              <label for="name">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your Name"
+                required
+              />
             </div>
 
             <div class="row">
               <div class="input-group">
-                <label>Email</label>
-                <input type="email" placeholder="Email Address" />
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Email Address"
+                  required
+                />
               </div>
               <div class="input-group">
-                <label>Phone Number</label>
-                <input type="text" placeholder="Phone Number" />
+                <label for="phone">Phone Number</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Phone Number"
+                  required
+                />
               </div>
             </div>
 
             <div class="input-group">
-              <label>Message</label>
-              <textarea rows="5" placeholder="Write your message..."></textarea>
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Write your message..."
+                required
+              ></textarea>
             </div>
 
             <button type="submit" class="submit-btn">Submit</button>
@@ -80,5 +105,6 @@
         </div>
       </div>
     </section>
+    <script src="Contact_Us.js"></script>
   </body>
 </html>
