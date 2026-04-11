@@ -1,8 +1,8 @@
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: "Poppins", sans-serif;
     line-height: 1.6;
-    background-image: linear-gradient(to bottom, #2a142d 50%, #49264F, #66356E);
+    /* background-image: linear-gradient(to bottom, rgb(26, 22, 25), #2a142d 50%, #49264F, #66356E); */
 }
 
 /* Header */
@@ -26,24 +26,6 @@ ul li {
     list-style-type: circle;
 }
 
-/* ul li::before {
-    content: "";
-    background-color: blueviolet;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    position: absolute;
-    margin-left: -15px;
-    margin-bottom: 20px;
-} */
-
-
-span {
-    display: block;
-    height: 1px;
-    width: 100%;
-    background-color: white;
-}
 
 /* Sections */
 section {
@@ -83,6 +65,65 @@ hr {
     width: 80%;
 }
 
+textarea {
+    border: 1px solid blueviolet;
+    resize: none;
+    outline: none;
+    width: 50%;
+    height: 50%;
+    border-radius: 13px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+
+.comment-section {
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+    transition: 0.3s;
+}
+
+.comment-section:hover {
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.4);
+}
+
+.comment-section button {
+    margin-top: 10px;
+    width: 20%;
+}
+
 a.email {
     color: blueviolet;
+}
+
+#contact-us p span {
+    font-weight: bold;
+}
+
+.comment-box {
+    background: #f9f9f9;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-box p {
+    margin: 0;
+}
+
+.comment-box button {
+    background: crimson;
+    padding: 5px 10px;
+    width: 20%;
+    /* border-radius: 6px; */
+    /* font-size: 12px; */
+}
+
+.comment-box button:hover {
+    background: darkred;
 }
