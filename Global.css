@@ -35,11 +35,17 @@ body {
   gap: 16px;
   padding: 16px 24px;
 
-  background: linear-gradient(135deg, #2e1065, #4c1d95);
-  color: white;
+  /*background: linear-gradient(135deg, #2e1065, #4c1d95);*/
+   background: #584999; 
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 
+  
+  color: white;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
+  border-radius: 35px;
 }
 .logo {
   font-size: 24px;

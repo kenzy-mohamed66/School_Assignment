@@ -5,7 +5,7 @@ body {
   background: #0f0b1a;
   color: #e5e7eb;
 }
-.nav {
+/*.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,8 +22,8 @@ body {
  
 
   
-}
-.logo {
+}*/
+/*.logo {
   font-size: 24px;
   font-weight: bold;
 }
@@ -86,7 +86,7 @@ body {
     0 0 25px rgba(139, 92, 246, 0.3);
 
   border-color: rgba(196, 181, 253, 0.5);
-}
+}*/
 /*All the above is the nav*/
 
 .before-greet{
@@ -94,6 +94,7 @@ body {
     color: rgba(237, 233, 254, 0.6);
     margin-left: 40px;
      margin-bottom: 0; 
+     margin-top: 10px;
     letter-spacing: 1.5px;
    
 }
@@ -188,6 +189,9 @@ body {
   gap: 15px;
   list-style: none;
   margin-right: 25px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+
   
 }
 
@@ -195,6 +199,7 @@ body {
 .task-overview progress {
   width: 100%;
   display: block;
+  
 }
 
 .task-overview li {
@@ -260,6 +265,7 @@ body {
   color: #c4b5fd;
   line-height: 1;
   margin-bottom: 6px;
+ 
 }
 .task {
   font-size: 12px;
@@ -313,6 +319,7 @@ progress::-webkit-progress-value {
   
   margin-left: 40px;
   margin-right: 40px;
+  
   width:96%;
  
   border-collapse: collapse;
