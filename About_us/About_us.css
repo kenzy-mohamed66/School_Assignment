@@ -100,3 +100,32 @@ a.email {
 #contact-us p span {
     font-weight: bold;
 }
+
+.comment-box {
+    background: #f9f9f9;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* النص */
+.comment-box p {
+    margin: 0;
+}
+
+/* زرار delete */
+.comment-box button {
+    background: crimson;
+    padding: 5px 10px;
+    width: 20%;
+    /* border-radius: 6px; */
+    /* font-size: 12px; */
+}
+
+.comment-box button:hover {
+    background: darkred;
+}
