@@ -59,6 +59,10 @@ body{
 .inputs i {
     color: rgb(161, 150, 150);
 
+    /* Ensure icon is clickable */
+    cursor: pointer;
+    pointer-events: auto; 
+
     /* Space between icon and right edge */
     margin-left: 10px; 
     font-size: 15px;
@@ -69,7 +73,13 @@ body{
 }
 
 .inputs:focus-within i {
-    color: #a076f9; /* Changes to your purple when typing */
+
+    /* Changes to purple when typing */
+    color: #a076f9; 
+}
+
+.inputs input.error::placeholder {
+    color: #ff4d4d !important;
 }
 
 .buttons{
@@ -146,4 +156,10 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0) inset !important;
     -webkit-text-fill-color: white !important;
     transition: background-color 5000s ease-in-out 0s;
+}
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+    display: none !important;
 }
