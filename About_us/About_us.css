@@ -112,12 +112,10 @@ a.email {
     align-items: center;
 }
 
-/* النص */
 .comment-box p {
     margin: 0;
 }
 
-/* زرار delete */
 .comment-box button {
     background: crimson;
     padding: 5px 10px;
