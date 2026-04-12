@@ -4,6 +4,7 @@
         <title>VIEW_CREATED_TASK</title>
         <link rel ="stylesheet" href ="../global.css">
         <link rel ="stylesheet" href ="view_created_tasks.css">
+  
     </head>
     <body>
       
@@ -126,4 +127,12 @@
     </td>
   </tr>
 </table>
+  <script>
+  document.querySelectorAll('.middle').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
+</script>
+    </body>
 </html>

@@ -92,3 +92,10 @@ function saveProfile() {
     msg.style.display = 'none';
   }, 3000);
 }
+
+  
+  document.querySelectorAll('.middle').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });

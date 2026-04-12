@@ -44,3 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
     messageBox.style.color = success ? '#1f7a4f' : '#9d1d21';
   }
 });
+
+
+
+  document.querySelectorAll('.middle').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
+

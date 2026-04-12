@@ -4,6 +4,7 @@
     <title>ADD TASK</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../Global.css">
+    
     </head>
 <body>
 
@@ -49,7 +50,7 @@
     </select>
 
     <label class="l2">Due Date</label>
-    <input  class=" form-input" date value="2026-04-02">
+    <input  class=" form-input"  type="date" date value="2026-04-02" id="due_date">
 
     <label class="l2" for="description">Task Description</label>
     <textarea class="form-input" id="description" name="description" rows="5" cols="45"
@@ -67,22 +68,16 @@
     </select>
    <hr>
 
-   <input type="submit" value="Submit"></input>
-   <input type="reset" value="Clear Form"></input> 
+ <input type="submit" value="Submit"  id="submitBtn" >
+   <input type="reset" value="Clear Form" onclick="clearform()">
    <a href="index.html"><input type="button" value="Cancel"/></a>
 
    </form>
 </div>
 
-  <script>
-  document.querySelectorAll('.middle').forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
-    }
-  });
-</script>
+ 
 
-
+<script src="admin.js" ></script>
 
 </body>
 </html>

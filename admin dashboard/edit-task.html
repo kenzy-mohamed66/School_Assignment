@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../Global.css">
+    <script src="admin.js" defer></script>
     <title>Edit Task</title>
   </head>
   <body>
@@ -37,7 +38,7 @@
       <textarea class="form-input">Finish exercises 1–10 from chapter 5</textarea>
 
       <label class="l2">Due Date</label>
-      <input  class=" form-input" date value="2026-04-02">
+      <input  class=" form-input"  type="date" date value="2026-04-02" id="due_date">
 
       <label class="l2">Status</label>
       <select class="select">
@@ -46,18 +47,12 @@
         <option>Done</option>
       </select>
 
-    <input type="submit" value="Submit"> 
-  <input type="reset" value="Clear Form"></input> 
-  <a href="index.html"><input type="button" value="Cancel"/></a>
+    <input type="submit" value="Submit" id="submitBtn"> 
+   <input type="reset" value="Clear Form" onclick="clearform()">
+   <a href="index.html"><input type="button" value="Cancel"/></a>
     </form>
   </div>
-   <script>
-  document.querySelectorAll('.middle').forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
-    }
-  });
-</script>
+ 
 
 </body>
 
