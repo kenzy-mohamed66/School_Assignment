@@ -39,9 +39,24 @@ input, textarea {
     width: 100%;
     padding: 12px 20px;
     border-radius: 15px;
-    border: none;
-    background: white;
+    /* border: none;
+    background: white; */
     font-size: 1rem;
+
+    /* new styles */
+    border: 2px solid #8750f7;
+    background: rgba(135, 80, 247, 0.1);
+    box-shadow: 0 0 10px rgba(135, 80, 247, 0.5);
+    color: white;
+}
+
+/*new style*/
+input:focus, textarea:focus {
+    outline: none; /* Removes default outline */
+    border: 2px solid #8750f7; 
+    background: rgba(135, 80, 247, 0.1); 
+    box-shadow: 0 0 10px rgba(135, 80, 247, 0.5); 
+    color: white;
 }
 
 .row { display: flex; gap: 15px; }
@@ -59,8 +74,15 @@ input, textarea {
 }
 
 /* Info Styling */
-.contact-info h1 { font-size: 3rem; margin-bottom: 20px; }
-.highlight { color: #8750f7; }
+.contact-info h1 { 
+    font-size: 3rem;
+    margin-bottom: 20px; 
+    /*new styles */
+    color:#b392f0;
+    text-shadow: 0 0 10px #8750f7, /* Soft inner glow */
+                 0 0 20px #8750f7, /* Medium outer glow */
+}
+.highlight {color: #8750f7;}
 .contact-info p { margin-bottom: 30px; color: #aaa; line-height: 1.6; }
 
 .info-item {
@@ -79,4 +101,9 @@ input, textarea {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+}
+
+/*new style */
+.info-item a {
+    color: white;
 }
