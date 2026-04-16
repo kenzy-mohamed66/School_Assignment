@@ -51,8 +51,8 @@
     <td>Completed ✅</td>
     <td>Admin — Dr</td>
      <td>
-      <a href="">Edit ✏️</a> |
-      <a href="">Delete 🗑️</a>
+     <a href="#" onclick="editTask(this)">Edit ✏️</a> 
+      <a href="#" onclick="deleteTask(this)">Delete 🗑️</a>
 
     </td>
   </tr>
@@ -66,8 +66,8 @@
     <td>Pending ⏳</td>
     <td>Admin — Dr</td>
       <td>
-      <a href="">Edit ✏️</a> |
-      <a href="">Delete 🗑️</a>
+     <a href="#" onclick="editTask(this)">Edit ✏️</a> 
+      <a href="#" onclick="deleteTask(this)">Delete 🗑️</a>
     </td>
   </tr>
   <tr>
@@ -80,8 +80,8 @@
     <td>Completed ✅</td>
     <td>Admin — Dr</td>
       <td>
-      <a href="">Edit ✏️</a> |
-      <a href="">Delete 🗑️</a>
+      <a href="#" onclick="editTask(this)">Edit ✏️</a> 
+      <a href="#" onclick="deleteTask(this)">Delete 🗑️</a>
     </td>
   </tr>
   <tr>
@@ -94,8 +94,8 @@
     <td>Overdue ⚠️</td>
     <td>Admin — Dr</td>
       <td>
-      <a href="">Edit ✏️</a> |
-      <a href="">Delete 🗑️</a>
+      <a href="#" onclick="editTask(this)">Edit ✏️</a> 
+      <a href="#" onclick="deleteTask(this)">Delete 🗑️</a>
     </td>
   </tr>
   <tr>
@@ -108,8 +108,8 @@
     <td>Pending ⏳</td>
     <td>Admin — Dr</td>
       <td>
-      <a href="">Edit ✏️</a> |
-      <a href="">Delete 🗑️</a>
+     <a href="#" onclick="editTask(this)">Edit ✏️</a> 
+      <a href="#" onclick="deleteTask(this)">Delete 🗑️</a>
     </td>
   </tr>
   <tr>
@@ -122,17 +122,11 @@
     <td>Completed ✅</td>
     <td>Admin — Dr</td>
       <td>
-      <a href="">Edit ✏️</a> |
-      <a href="">Delete 🗑️</a>
+     <a href="#" onclick="editTask(this)">Edit ✏️</a> 
+      <a href="#" onclick="deleteTask(this)">Delete 🗑️</a>
     </td>
   </tr>
 </table>
-  <script>
-  document.querySelectorAll('.middle').forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
-    }
-  });
-</script>
+  <script src="edit_task.js" ></script>
     </body>
 </html>
