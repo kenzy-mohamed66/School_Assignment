@@ -8,7 +8,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0) inset !important; /* Forces background to stay transparent */
-    -webkit-text-fill-color: white !important; /* Ensures the typed text stays white */
+    -webkit-text-fill-color: white !important; /* Ensures typed text stays white */
     transition: background-color 5000s ease-in-out 0s; /* Delays the browser's color change indefinitely */
 }
 

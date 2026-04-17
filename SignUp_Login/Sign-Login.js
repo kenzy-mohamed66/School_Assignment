@@ -1,11 +1,12 @@
 function ValidateSignUp(event) {
-
+    // Get input elements, define email format regex
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const confirmInput = document.getElementById("confirm-password");
     const mailFormat = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
     if (passwordInput.value !== confirmInput.value) {
+        // Prevent form submission
         event.preventDefault();
 
         confirmInput.value = "";
@@ -29,7 +30,7 @@ function ValidateSignUp(event) {
 }
 
 function handleSubmit(event) {
-
+    // Get role from signup/login form
     const roleElement = document.getElementById("signup_role") || document.getElementById("login_role");
     const role = roleElement ? roleElement.value : "";
 
@@ -78,7 +79,7 @@ if (form) {
         if(document.getElementById('confirm-password')){
             ValidateSignUp(event);
         }
-        //If validation passed, the redirection run
+        //If validation passed, redirection run
         if (!event.defaultPrevented) {
             handleSubmit(event);
         }
@@ -88,6 +89,7 @@ if (form) {
 const loginForm = document.getElementById("login-form");
 
 if (loginForm) {
+    //Check if required fields is valid
     loginForm.onsubmit = function(event) {
         event.preventDefault();
         handleSubmit(event);
@@ -100,7 +102,7 @@ document.querySelectorAll(".fa-eye").forEach(icon => {
 
 document.querySelectorAll('input:not([type="submit"])').forEach(input => {
 
-    // Lamma el user yedos gowa el input (Purple border)
+    // Lama el user yedos gwa el input, Purple border
     input.onfocus = () => { 
         statusColor(input, "#a076f9"); 
 
@@ -119,7 +121,7 @@ document.querySelectorAll('input:not([type="submit"])').forEach(input => {
         input.placeholder = "Email"; 
     }
 
-    // Lamma el user yokhrog barra el input (Check logic)
+    // Lama el user yokhrog bara el input, Check logic
     input.onblur = () => {
         if (input.hasAttribute("required") && input.value.trim() === "") {
             statusColor(input, "#ff4d4d"); // Red if empty
