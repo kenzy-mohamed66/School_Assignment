@@ -45,12 +45,15 @@
     <!-- STATS -->
     <div class="stats">
       <div>
-        <h2>👤500+</h2>
+          <h2><span class="count" data-target="500">0</span>👤</h2>
+        
+        <!--<h2>👤500+</h2>-->
         <p>Teachers</p>
       </div>
 
       <div>
-        <h2>✔️ 1200+</h2>
+        <h2><span class="count" data-target="1200">0</span>✔️ </h2>
+        <!--<h2>✔️ 1200+</h2>-->
         <p>Tasks Completed</p>
       </div>
 
@@ -69,9 +72,10 @@
   clip-path: polygon(0% 10%, 5% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0% 90%);
   float: left;
   margin-right: 25px;
-  
   shape-outside: polygon(0% 10%, 5% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0% 90%);
   box-shadow: 0 20px 40px rgba(124,106,247,0.4);
+  animation: slideInRight 0.8s ease forwards;
+  opacity: 0;
 ">
 </section>
 
