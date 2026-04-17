@@ -17,7 +17,7 @@ document.querySelectorAll('.middle').forEach(link => {
 document.querySelector(".log").addEventListener("click", function(e) {
   e.preventDefault();
   if (confirm("Are you sure you want to logout?")) {
-    window.location.href = "#";
+    window.location.href = "../SignUp_Login/Login.html";
   }
 });
 
