@@ -107,11 +107,28 @@ function filterTable() {
   });
 }
 
-  
-   
-  document.querySelectorAll('.middle').forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
-    }
-  });
 
+
+async function connectToDjango() {
+    const output = document.getElementById("output");
+    if (!output) return;
+
+    output.innerText = 'Checking backend connection...';
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/data/');
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Success:", data);
+        output.innerText = `Connected to backend. Response: ${JSON.stringify(data)}`;
+        return data;
+    } catch (error) {
+        output.innerText = `Backend connection failed: ${error.message}`;
+        console.error("Error connecting:", error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', connectToDjango);
