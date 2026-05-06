@@ -29,24 +29,30 @@
   <div class="form-container">
     
 
-    <form>
+    <form onsubmit="updateTask(event)"> 
          <h1 class="h1">FILL THE FOLLOWING FORM</h1>
       <label class="l2">Task Title</label>
-      <input class="form-input" type="text" value="Math Homework">
+      <!--<input class="form-input" type="text" value="Math Homework"> -->
+      <input id="title" class="form-input" type="text">
 
       <label class="l2">Description</label>
-      <textarea class="form-input">Finish exercises 1–10 from chapter 5</textarea>
+      <!--<textarea class="form-input">Finish exercises 1–10 from chapter 5</textarea>-->
+      <textarea id="description" class="form-input"></textarea>
 
       <label class="l2">Due Date</label>
-      <input  class=" form-input"  type="date" date value="2026-04-02" id="due_date">
+      <!--<input  class=" form-input"  type="date" date value="2026-04-02" id="due_date">-->
+      <input id="due_date" class="form-input" type="date">
 
       <label class="l2">Status</label>
-      <select class="select">
+      <select id="status" class="select"><option>Pending</option>
+        <option>In Progress</option>
+        <option>Done</option></select>
+     <!-- <select class="select">
         <option>Pending</option>
         <option>In Progress</option>
         <option>Done</option>
-      </select>
-
+      </select>-->
+      
     <input type="submit" value="Submit" id="submitBtn"> 
    <input type="reset" value="Clear Form" onclick="clearform()">
    <a href="index.html"><input type="button" value="Cancel"/></a>
