@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import get_data
+from . import views
 
 urlpatterns = [
-    path('data/', get_data),
+    path('data/',            views.get_data,     name='get_data'),
+    path('data/<str:subject>/', views.update_task, name='update_task'),
 ]
