@@ -15,3 +15,11 @@ class UserSerializer(serializers.ModelSerializer):
         if len(value) < 3:
             raise serializers.ValidationError("Username must be at least 3 characters.")
         return value
+    #kenzyyy
+    from rest_framework import serializers
+from .models import Task
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model  = Task
+        fields = ['subject', 'priority', 'student', 'desc', 'status']
