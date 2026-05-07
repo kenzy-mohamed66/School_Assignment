@@ -23,3 +23,12 @@ class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model  = Task
         fields = ['subject', 'priority', 'student', 'desc', 'status']
+
+
+
+#jana
+from .models import Task_admin
+class TaskSerializer_admin(serializers.ModelSerializer):
+    class Meta:
+        model = Task_admin
+        fields = '__all__'

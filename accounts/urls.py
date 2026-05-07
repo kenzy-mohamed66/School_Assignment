@@ -13,3 +13,10 @@ urlpatterns = [
     path('data/',            views.get_data,     name='get_data'),
     path('data/<str:subject>/', views.update_task, name='update_task'),
 ]
+
+#jana
+from .views import TaskView
+
+urlpatterns = [
+    path('tasks/', TaskView.as_view()),
+]

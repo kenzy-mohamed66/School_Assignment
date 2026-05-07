@@ -104,3 +104,36 @@ if (formo) {
   });
 }
 
+document
+.getElementById("taskForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const data = {
+        task_id: document.getElementById("task_id").value,
+        task_title: document.getElementById("task_title").value,
+        teacher_name: document.getElementById("teacher_name").value,
+        priority: document.getElementById("priority").value,
+        due_date: document.getElementById("due_date").value,
+        description: document.getElementById("description").value,
+        admin_name: document.getElementById("admin_name").value,
+        status: document.getElementById("status").value
+    };
+
+    const response = await fetch(
+        "http://127.0.0.1:8000/api/tasks/",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+    );
+
+    const result = await response.json();
+
+    console.log(result);
+
+});

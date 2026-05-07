@@ -41,3 +41,15 @@ class Task(models.Model):
 
     def __str__(self):
         return self.subject
+    
+
+    #jana
+class Task_admin(models.Model):
+    task_id = models.CharField(max_length=100)
+    task_title = models.CharField(max_length=200)
+    teacher_name = models.CharField(max_length=100)
+    priority = models.CharField(max_length=20)
+    due_date = models.DateField()
+    description = models.TextField()
+    admin_name = models.CharField(max_length=100)
+    status = models.CharField(max_length=30)

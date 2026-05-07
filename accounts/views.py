@@ -71,3 +71,20 @@ def update_task(request, subject):
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+#jana
+from .models import Task_admin
+from .serializers import TaskSerializer_admin
+
+class TaskView(APIView):
+
+    def post(self, request):
+
+        serializer = TaskSerializer_admin(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+
+        return Response(serializer.errors, status=400)
