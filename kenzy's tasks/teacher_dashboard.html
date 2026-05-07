@@ -12,7 +12,7 @@
 
 <nav class="nav">
   
-  <strong class="logo">EduTask</strong>|
+  <strong class="logo">EduCore</strong>|
   
   <a class="middle" href="teacher_dashboard.html">Dashboard</a>
   <a class="middle" href="task_details.html" class="active">Task Details</a>
@@ -23,7 +23,8 @@
   <a class="middle" href="../Profile Page/Profile.html">profile</a>
 
   <span class="user-info">
-    Logged in as: <strong>Teacher: Dr. ...</strong>
+    Logged in as: <strong id="nav-username">Teacher: ...</strong>
+
     <a class="log" href="../SignUp_Login/Login.html">Logout</a>
   </span>
 
@@ -47,7 +48,7 @@
  
 <main>
   <div class="page-header">
-    <h1>Welcome, Teacher Name</h1>
+<h1 id="welcome-msg">Welcome, Teacher</h1>
     <p>Manage and track all assigned tasks below.</p>
   </div>
   <hr>
@@ -190,6 +191,12 @@
 </div>
  
 <script src="motion.js"></script>
+<script>
+    const username = localStorage.getItem('username') || 'Teacher';
+    const role     = localStorage.getItem('role') || 'teacher';
+    document.getElementById('nav-username').textContent = role.charAt(0).toUpperCase() + role.slice(1) + ': ' + username;
+    document.getElementById('welcome-msg').textContent  = 'Welcome, ' + username;
+</script>
 </body>
 </html>
  
