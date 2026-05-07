@@ -59,7 +59,7 @@ async function handleSubmit(event) {
             const result = await response.json();
             
             if (response.ok) {
-                alert("Signup successful! Please login.");
+                alert("Signup successfully, Please login.");
                 window.location.href = "Login.html";
             } 
             
@@ -92,6 +92,10 @@ async function handleSubmit(event) {
             if (response.ok) {
                 // Redirect based on role from server
                 const userRole = result.role;
+                
+                //Save user data to pass to dashboard
+                localStorage.setItem("username", result.user);
+                localStorage.setItem("role", userRole);
 
                 if (userRole === "admin") {
                     window.location.href = "../admin dashboard/index.html";
