@@ -29,20 +29,91 @@ function ValidateSignUp(event) {
     }
 }
 
-function handleSubmit(event) {
+async function handleSubmit(event) {
+    
+    event.preventDefault();
+
     // Get role from signup/login form
     const roleElement = document.getElementById("signup_role") || document.getElementById("login_role");
     const role = roleElement ? roleElement.value : "";
 
-    if (role === "admin") {
-        window.location.href = "../admin dashboard/index.html";
+    // Check if it's signup or login form
+    const isSignup = !!document.getElementById("signup-form");
+
+    if (isSignup) {
+        // SIGNUP API CALL
+        const data = {
+            username: document.getElementById("username") ? document.getElementById("username").value : "",
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+            role: role
+        }; 
+        
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/signup/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                alert("Signup successful! Please login.");
+                window.location.href = "Login.html";
+            } 
+            
+            else {
+                alert("Signup failed: " + JSON.stringify(result));
+            }
+        }
+        
+        catch(error){
+            alert("Can't connect to server. Make sure backend is running.");
+        }
     }
-    else if (role === "teacher") {
-        window.location.href = "../kenzy's tasks/teacher_dashboard.html";
-    }
-    else{
-        event.preventDefault();
-        alert("Please select a valid user role.");
+    
+    else {
+        // LOGIN API CALL
+        const data = {
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+        };
+        
+        try{
+            const response = await fetch("http://127.0.0.1:8000/api/login/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Redirect based on role from server
+                const userRole = result.role;
+
+                if (userRole === "admin") {
+                    window.location.href = "../admin dashboard/index.html";
+                } 
+
+                else if (userRole === "teacher") {
+                    window.location.href = "../kenzy's tasks/teacher_dashboard.html";
+                }
+
+                else {
+                    alert("Role not recognized, choose a valid role");
+                }
+            }
+
+            else {
+                alert("Login failed: Invalid email or password.");
+            }
+        }
+
+        catch(error){
+            alert("Can't connect to server. Make sure backend is running.");
+        }
     }
 }
 
