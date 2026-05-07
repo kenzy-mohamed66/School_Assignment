@@ -93,7 +93,7 @@ async function handleSubmit(event) {
                 // Redirect based on role from server
                 const userRole = result.role;
                 
-                //Save user data to pass to dashboard
+                //Save user data to pass to dashboards
                 localStorage.setItem("username", result.user);
                 localStorage.setItem("role", userRole);
 
