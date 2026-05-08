@@ -58,7 +58,7 @@ MIDDLEWARE = [
 #Allow your frontend to connect
 CORS_ALLOW_ALL_ORIGINS = True 
 
-ROOT_URLCONF = 'Backend.urls'
+ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Backend.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # Database
@@ -166,7 +166,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'api',  # 👈 ضيفي دي هنا
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -180,7 +180,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myproject.urls'
+ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
@@ -197,7 +197,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myproject.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # Database
