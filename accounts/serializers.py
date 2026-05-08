@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from .models import User
+from .models import Task
+from .models import Task_admin
 
+# Mariam
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -15,10 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
         if len(value) < 3:
             raise serializers.ValidationError("Username must be at least 3 characters.")
         return value
-    #kenzyyy
-    from rest_framework import serializers
-from .models import Task
 
+#kenzyyy
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model  = Task
@@ -27,7 +28,6 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
 #jana
-from .models import Task_admin
 class TaskSerializer_admin(serializers.ModelSerializer):
     class Meta:
         model = Task_admin

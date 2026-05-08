@@ -1,5 +1,6 @@
 from django.db import models
 
+# Mariam
 # Defines a new database table named User
 class User(models.Model):
 
@@ -17,18 +18,9 @@ class User(models.Model):
     # Method return string representation of the User object, useful for debugging and admin interface
     def __str__(self):
         return self.username
+    
 
-class ContactMessage(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    message = models.TextField()
-    sent_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.name} - {self.email}"
-    # kenzy
-
-# Create your models here.
+# kenzy
 class Task(models.Model):
     PRIORITY_CHOICES = [('High', 'High'), ('Medium', 'Medium'), ('Low', 'Low')]
     STATUS_CHOICES = [('In Progress', 'In Progress'), ('Completed', 'Completed')]
@@ -43,7 +35,7 @@ class Task(models.Model):
         return self.subject
     
 
-    #jana
+#jana
 class Task_admin(models.Model):
     task_id = models.CharField(max_length=100)
     task_title = models.CharField(max_length=200)
@@ -53,3 +45,14 @@ class Task_admin(models.Model):
     description = models.TextField()
     admin_name = models.CharField(max_length=100)
     status = models.CharField(max_length=30)
+
+# Hazem
+class ContactMessage(models.Model):
+    name    = models.CharField(max_length=100)
+    email   = models.EmailField()
+    phone   = models.CharField(max_length=11)
+    message = models.TextField()
+    sent_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.email}"

@@ -1,5 +1,3 @@
-# from django.shortcuts import render
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -7,7 +5,16 @@ from .models import User
 from .serializers import UserSerializer
 import bcrypt
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
+from .models import Task
+from .serializers import TaskSerializer
 
+from .models import Task_admin
+from .serializers import TaskSerializer_admin
+
+# Mariam
 class SignupView(APIView):
     def post(self, request):
         data = request.data.copy()
@@ -43,14 +50,15 @@ class LoginView(APIView):
             
         except User.DoesNotExist:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
 #kenzy
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Task
-from .serializers import TaskSerializer
+# from django.http import JsonResponse
+# from django.views.decorators.csrf import csrf_exempt
+# from rest_framework.decorators import api_view
+# from rest_framework.response import Response
+# from rest_framework import status
+# from .models import Task
+# from .serializers import TaskSerializer
 
 @api_view(['GET'])
 def get_data(request):
@@ -74,8 +82,8 @@ def update_task(request, subject):
 
 
 #jana
-from .models import Task_admin
-from .serializers import TaskSerializer_admin
+# from .models import Task_admin
+# from .serializers import TaskSerializer_admin
 
 class TaskView(APIView):
 
