@@ -86,6 +86,10 @@ def update_task(request, subject):
 # from .serializers import TaskSerializer_admin
 
 class TaskView(APIView):
+    def get(self, request):
+        tasks = Task_admin.objects.all()
+        serializer = TaskSerializer_admin(tasks, many=True)
+        return Response(serializer.data)
 
     def post(self, request):
 
@@ -96,3 +100,35 @@ class TaskView(APIView):
             return Response(serializer.data, status=201)
 
         return Response(serializer.errors, status=400)
+
+# sondos part
+class TaskDetailView(APIView):
+    def get_object(self, pk):
+        try:
+            return Task_admin.objects.get(pk=pk)
+        except Task_admin.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        task = self.get_object(pk)
+        if not task:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = TaskSerializer_admin(task)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        task = self.get_object(pk)
+        if not task:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = TaskSerializer_admin(task, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        task = self.get_object(pk)
+        if not task:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        task.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

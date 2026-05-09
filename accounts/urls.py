@@ -12,6 +12,8 @@ urlpatterns = [
     path('data/',            views.get_data,     name='get_data'),
     path('data/<str:subject>/', views.update_task, name='update_task'),
     path('tasks/', TaskView.as_view()),
+    # sondos part
+    path('tasks/<int:pk>/', views.TaskDetailView.as_view(), name='task_detail'),
 ]
 #kenzy
 # from django.urls import path
