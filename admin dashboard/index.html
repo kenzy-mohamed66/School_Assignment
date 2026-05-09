@@ -40,10 +40,10 @@
 <div class="overview-box">
   <h2>System Overview</h2>
   <ul>
-    <li>👩‍🎓<span class="num">320</span><span class="label">Total Students</span></li>
-    <li>👨‍🏫<span class="num">25</span><span class="label">Total Teachers</span></li>
-    <li>📚<span class="num">12</span><span class="label">Total Courses</span></li>
-    <li>📝<span class="num">10</span><span class="label">Total Assignments</span></li>
+    <li>👩‍🎓<span class="num" id="students_count">320</span><span class="label">Total Students</span></li>
+    <li>👨‍🏫<span class="num" id="teachers-count">0</span><span class="label">Total Teachers</span></li>
+    <li>📚<span class="num" id="courses-count">0</span><span class="label">Total Courses</span></li>
+    <li>📝<span class="num" id="assignments-count">0</span><span class="label">Total Assignments</span></li>
   </ul>
 </div>
 
@@ -51,10 +51,10 @@
 <div class="task-overview" >
 <h2 >Task Overview</h2>
 <ul>
-    <li><span class="numb">6</span><span class="task">Completed Tasks</span></li>
-    <li><span class="numb">3</span><span class="task">Pending Tasks</span></li>
-    <li><span class="numb">1</span><span class="task">Overdue Tasks</span></li>
-    <li><span class="numb">60%
+    <li><span class="numb" id="completed-count">0</span><span class="task">Completed Tasks</span></li>
+    <li><span class="numb" id="pending-count">0</span><span class="task">Pending Tasks</span></li>
+    <li><span class="numb" id="overdue-count">0</span><span class="task">Overdue Tasks</span></li>
+    <li><span class="numb" id="completion-rate">0%
     </span > <span class="task">Completion Rate</span></li>
     <li>
        <span class="task"> Progress</span> 
@@ -72,11 +72,12 @@
     <th >Course</th>
     <th >Status</th>
 </tr>
-
+<tbody id="task-table-body">
 <tr>
     <td >Math</td>
     <td>Completed ✅</td>
 </tr>
+
 <tr>
     <td>Chemistry</td>
     <td>Pending ⏳</td>
@@ -93,6 +94,7 @@
     <td>Biology</td>
     <td>Pending ⏳</td>
 </tr>
+</tbody>
 </table>
 </div>
 </div>

@@ -45,6 +45,7 @@ class Task_admin(models.Model):
     description = models.TextField()
     admin_name = models.CharField(max_length=100)
     status = models.CharField(max_length=30)
+    course = models.CharField(max_length=100, null=True, blank=True)
 
 # Hazem
 class ContactMessage(models.Model):

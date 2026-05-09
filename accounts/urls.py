@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SignupView, LoginView, TaskView
+from .views import DashboardStats, SignupView, LoginView, TaskView
 from . import views
 
 
@@ -11,7 +11,8 @@ urlpatterns = [
     # kenzy
     path('data/',            views.get_data,     name='get_data'),
     path('data/<str:subject>/', views.update_task, name='update_task'),
-    path('tasks/', TaskView.as_view()),
+    path('tasks/', TaskView.as_view(),name='tasks'),
+    path("dashboard-stats/", DashboardStats.as_view()),
 ]
 #kenzy
 # from django.urls import path

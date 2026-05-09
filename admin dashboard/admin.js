@@ -21,26 +21,20 @@ document.querySelector(".log").addEventListener("click", function(e) {
   }
 });
 
+//for user greeting
+const username = localStorage.getItem("username");
 
+const greet = document.querySelector(".greet");
 
+if (username&& greet) {
+    greet.innerHTML = `Welcome Back,<br>${username}`;
+}
 
 function clearform() {
   alert("Form cleared 🧹");
 }
 
-const nums = document.querySelectorAll(".num");
-if (nums.length > 0) {
-  nums.forEach(el => {
-    const target = parseInt(el.textContent);
-    if (isNaN(target)) return;
-    let count = 0;
-    const interval = setInterval(() => {
-      count++;
-      el.textContent = count;
-      if (count >= target) clearInterval(interval);
-    }, 20);
-  });
-}
+
 
 
 const tableCells = document.querySelectorAll(".the-table td");
@@ -104,36 +98,127 @@ if (formo) {
   });
 }
 
-document
-.getElementById("taskForm1")
-.addEventListener("submit", async function(e){
+const taskForm = document.getElementById("taskform1");
 
-    e.preventDefault();
+if (taskForm) {
 
-    const data = {
-        task_id: document.getElementById("task_id").value,
-        task_title: document.getElementById("task_title").value,
-        teacher_name: document.getElementById("teacher_name").value,
-        priority: document.getElementById("priority").value,
-        due_date: document.getElementById("due_date").value,
-        description: document.getElementById("description").value,
-        admin_name: document.getElementById("admin_name").value,
-        status: document.getElementById("status").value
-    };
+    taskForm.addEventListener("submit", async function(e) {
 
-    const response = await fetch(
-        "http://127.0.0.1:8000/api/tasks/",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
+        e.preventDefault();
+
+        const data = {
+            task_id: document.getElementById("task_id").value,
+            task_title: document.getElementById("task_title").value,
+            teacher_name: document.getElementById("teacher_name").value,
+            priority: document.getElementById("priority").value,
+            due_date: document.getElementById("due_date").value,
+            description: document.getElementById("description").value,
+            admin_name: document.getElementById("admin_name").value,
+            status: document.getElementById("status").value,
+            course: document.getElementById("Course").value,
+        };
+
+        try {
+
+            const response = await fetch(
+                "http://127.0.0.1:8000/api/tasks/",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                }
+            );
+
+            const result = await response.json();
+
+            console.log("Task added:", result);
+
+        } catch (error) {
+
+            console.error("Error adding task:", error);
+
         }
-    );
 
-    const result = await response.json();
+    });
 
-    console.log(result);
+}
 
+
+async function loadDashboard() {
+    console.log("FETCHING DASHBOARD...");
+
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/dashboard-stats/");
+        const data = await response.json();
+
+        console.log("Dashboard data:", data);
+
+        const teachers = document.getElementById("teachers-count");
+        const courses = document.getElementById("courses-count");
+        const assignments = document.getElementById("assignments-count");
+        const completed = document.getElementById("completed-count");
+        const pending = document.getElementById("pending-count");
+        const overdue = document.getElementById("overdue-count");
+        const completionRate = document.getElementById("completion-rate");
+
+        if (teachers) teachers.innerText = data.teachers;
+        if (courses) courses.innerText = data.courses;   // ✅ ADD THIS
+        if (assignments) assignments.innerText = data.assignments;
+        if (completed) completed.innerText = data.completed;
+        if (pending) pending.innerText = data.pending;
+        if (overdue) overdue.innerText = data.overdue;
+
+        if (completionRate) {
+            completionRate.innerText = data.completion_rate + "%";
+        }
+
+    } catch (error) {
+        console.error("Dashboard load failed:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (document.getElementById("teachers-count")) {
+        loadDashboard();
+    }
+});
+
+async function loadTasksTable() {
+
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/tasks/");
+        const data = await response.json();
+
+        const tableBody = document.getElementById("task-table-body");
+
+        if (!tableBody) return;
+
+        tableBody.innerHTML = "";
+
+        data.forEach(task => {
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${task.course || "No Course"}</td>
+                <td>${task.status}</td>
+            `;
+
+            tableBody.appendChild(row);
+        });
+
+    } catch (error) {
+        console.error("Error loading tasks table:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    if (document.getElementById("teachers-count")) {
+        loadDashboard();
+    }
+
+    loadTasksTable(); 
 });

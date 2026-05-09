@@ -82,17 +82,61 @@ def update_task(request, subject):
 
 
 #jana
-# from .models import Task_admin
-# from .serializers import TaskSerializer_admin
+
 
 class TaskView(APIView):
 
+    def get(self, request):
+        tasks = Task_admin.objects.all()
+        serializer = TaskSerializer_admin(tasks, many=True)
+        return Response(serializer.data)
+
     def post(self, request):
+
+        print("DATA RECEIVED:", request.data)
 
         serializer = TaskSerializer_admin(data=request.data)
 
         if serializer.is_valid():
+
             serializer.save()
+
+            print("SAVED SUCCESSFULLY")
+
             return Response(serializer.data, status=201)
 
+        print("ERRORS:", serializer.errors)
+
         return Response(serializer.errors, status=400)
+    
+
+class DashboardStats(APIView):
+
+    def get(self, request):
+
+        all_tasks = Task_admin.objects.all()
+
+        total_assignments = all_tasks.count()
+
+        completed_tasks = all_tasks.filter(status__iexact="completed").count()
+
+        pending_tasks = all_tasks.filter(status__iexact="pending").count()
+
+        overdue_tasks = all_tasks.filter(status__iexact="overdue").count()
+
+        in_progress_tasks = all_tasks.filter(status__iexact="in_progress").count()
+
+        completion_rate = 0
+        if total_assignments > 0:
+            completion_rate = (completed_tasks / total_assignments) * 100
+
+        return Response({
+            "teachers": Task_admin.objects.values("teacher_name").distinct().count(),
+            "courses": Task_admin.objects.values("course").distinct().count(),
+            "assignments": total_assignments,
+            "completed": completed_tasks,
+            "pending": pending_tasks,
+            "overdue": overdue_tasks,
+            "in_progress": in_progress_tasks,
+            "completion_rate": round(completion_rate, 1)
+        })
