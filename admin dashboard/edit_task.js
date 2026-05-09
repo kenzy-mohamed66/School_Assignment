@@ -8,7 +8,10 @@ document.querySelectorAll('.middle').forEach(link => {
 
 // DELETE
 function deleteTask(btn) {
+    // event.preventDefault();
+
     let confirmDelete = confirm("Are you sure you want to delete this task?");
+    
     if (confirmDelete) {
         let row = btn.closest("tr");
         row.remove();
@@ -16,105 +19,85 @@ function deleteTask(btn) {
 }
 
 // EDIT
-// sondos part: Navigate directly to the edit-task.html page with the selected task's ID
-function editTask(btn) {
-    let row = btn.closest("tr");
-    let taskId = row.children[0].innerText.trim();
-    window.location.href = `edit-task.html?id=${taskId}`;
-}
+// function editTask(btn) {
+//     // event.preventDefault();
+
+//     let row = btn.closest("tr");
+
+//     let title = row.children[1];
+//     let teacher = row.children[2];
+//     let course = row.children[3];
+//     let priority = row.children[4];
+//     let description = row.children[5];
+//     let status = row.children[6];
+
+//     let newTitle = prompt("Edit Title:", title.innerText);
+//     let newTeacher = prompt("Edit Teacher:", teacher.innerText);
+//     let newCourse = prompt("Edit Course:", course.innerText);
+//     let newPriority = prompt("Edit Priority:", priority.innerText);
+//     let newDescription = prompt("Edit Description:", description.innerText);
+//     let newStatus = prompt("Edit Status:", status.innerText);
+
+//     if (newTitle) title.innerText = newTitle;
+//     if (newTeacher) teacher.innerText = newTeacher;
+//     if (newCourse) course.innerText = newCourse;
+//     if (newPriority) priority.innerText = newPriority;
+//     if (newDescription) description.innerText = newDescription;
+//     if (newStatus) status.innerText = newStatus;
+// }
+
+//backend sondos editTask
 
 
 //edits 
-let currentTaskId = null;
+// 1. Get the task ID from the URL (e.g. edit-task.html?id=1)
+const urlParams = new URLSearchParams(window.location.search);
+const taskId = urlParams.get('id');
 
 window.onload = function () {
-    const titleSelect = document.getElementById("title");
-    if (!titleSelect) return; // Exit if not on the edit page
+    if (!taskId) {
+        alert("No task ID provided in the URL!");
+        return;
+    }
 
-    // Fetch all tasks from the database to populate the dropdown
-    fetch(`http://127.0.0.1:8000/api/tasks/`)
-        .then(res => res.json())
-        .then(tasks => {
-            tasks.forEach(task => {
-                const option = document.createElement("option");
-                option.value = task.id; // Backend ID
-                option.textContent = task.task_title;
-                option.setAttribute("data-title", task.task_title);
-                titleSelect.appendChild(option);
-            });
-
-            // If there's an ID in the URL (from clicking Edit on dashboard), select it automatically
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlTaskId = urlParams.get('id');
-            if (urlTaskId) {
-                titleSelect.value = urlTaskId;
-                loadTaskDetails(urlTaskId);
-            }
-        })
-        .catch(err => console.error("Error loading tasks:", err));
-
-    // When the user selects a task from the dropdown, fetch its details
-    titleSelect.addEventListener("change", function() {
-        const selectedId = this.value;
-        if (selectedId) {
-            loadTaskDetails(selectedId);
-        } else {
-            // Clear the form if "-- Select a Task --" is chosen
-            document.getElementById("description").value = "";
-            document.getElementById("due_date").value = "";
-            if (document.getElementById("status")) {
-                document.getElementById("status").value = "Pending";
-            }
-            currentTaskId = null;
-        }
-    });
-};
-
-function loadTaskDetails(taskId) {
-    currentTaskId = taskId;
-    fetch(`http://127.0.0.1:8000/api/tasks/${taskId}/`)
+    // 2. Fetch the specific task details from the Django backend
+    fetch(`http://127.0.0.1:8000/tasks/${taskId}/`)
         .then(res => {
             if (!res.ok) throw new Error("Task not found");
             return res.json();
         })
         .then(data => {
-            document.getElementById("description").value = data.description || "";
-            document.getElementById("due_date").value = data.due_date || ""; 
-            if (document.getElementById("status")) {
-                document.getElementById("status").value = data.status || "";
-            }
-            // Ensure the select dropdown matches this task
-            document.getElementById("title").value = taskId;
+            // 3. Fill the HTML form inputs with the existing data
+            document.getElementById("title").value = data.title;
+            document.getElementById("description").value = data.description;
+            
+            // Map the backend 'student' to your 'due_date' input
+            document.getElementById("due_date").value = data.student || ""; 
+            // Map the backend 'completed' boolean to your 'status' dropdown
+            document.getElementById("status").value = data.completed ? "Done" : "Pending";
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("Could not load task details. It may not exist in the database yet.");
+            alert("Could not load task details.");
         });
-}
-
+};
 
 function updateTask(event) {
     event.preventDefault(); // Stop the form from reloading the page
 
-    if (!currentTaskId) {
-        alert("Please select a task from the dropdown to edit!");
-        return;
-    }
+    if (!taskId) return;
 
-    const titleSelect = document.getElementById("title");
-    const selectedOption = titleSelect.options[titleSelect.selectedIndex];
-    const taskTitle = selectedOption.getAttribute("data-title");
-
-    // Gather the updated data from the form
+    // 4. Gather the updated data from the form
     const updatedData = {
-        task_title: taskTitle, // keep original title
+        title: document.getElementById("title").value,
         description: document.getElementById("description").value,
-        due_date: document.getElementById("due_date").value,
-        status: document.getElementById("status") ? document.getElementById("status").value : ""
+        // Map the form fields back to your Django model's expected fields
+        student: document.getElementById("due_date").value,
+        completed: document.getElementById("status").value === "Done"
     };
 
-    // Send a PUT request to update the task in the database
-    fetch(`http://127.0.0.1:8000/api/tasks/${currentTaskId}/`, {
+    // 5. Send a PUT request to update the task in the database
+    fetch(`http://127.0.0.1:8000/tasks/${taskId}/`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -127,11 +110,12 @@ function updateTask(event) {
     })
     .then(data => {
         alert("Task updated successfully ✅");
-        // Automatically redirect to the tasks page after saving
-        window.location.href = "view_created_task.html";
+        // Optional: Uncomment the line below to automatically redirect to the tasks page after saving
+        // window.location.href = "view_created_tasks.html";
     })
     .catch(error => {
         console.error("Error:", error);
         alert("Failed to update task.");
     });
 }
+

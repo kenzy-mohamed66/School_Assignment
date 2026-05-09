@@ -32,21 +32,26 @@
     <form onsubmit="updateTask(event)"> 
          <h1 class="h1">FILL THE FOLLOWING FORM</h1>
       <label class="l2">Task Title</label>
-      <!-- sondos part: changed to select dropdown -->
-      <select id="title" class="form-input">
-        <option value="">-- Select a Task --</option>
-      </select>
+      <!--<input class="form-input" type="text" value="Math Homework"> -->
+      <input id="title" class="form-input" type="text">
 
       <label class="l2">Description</label>
+      <!--<textarea class="form-input">Finish exercises 1–10 from chapter 5</textarea>-->
       <textarea id="description" class="form-input"></textarea>
 
       <label class="l2">Due Date</label>
+      <!--<input  class=" form-input"  type="date" date value="2026-04-02" id="due_date">-->
       <input id="due_date" class="form-input" type="date">
 
       <label class="l2">Status</label>
       <select id="status" class="select"><option>Pending</option>
         <option>In Progress</option>
         <option>Done</option></select>
+     <!-- <select class="select">
+        <option>Pending</option>
+        <option>In Progress</option>
+        <option>Done</option>
+      </select>-->
       
     <input type="submit" value="Submit" id="submitBtn"> 
    <input type="reset" value="Clear Form" onclick="clearform()">
@@ -54,7 +59,9 @@
     </form>
   </div>
  
-  <!-- sondos part: include edit_task.js to handle the form logic -->
-  <script src="edit_task.js"></script>
+
 </body>
+
+
+
 </html>
