@@ -119,3 +119,119 @@ function updateTask(event) {
     });
 }
 
+//Adham
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadTasksTable();
+});
+
+//Add
+
+async function loadTasksTable() {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/tasks/");
+        const data = await response.json();
+
+        const tableBody = document.querySelector("table tbody");
+        
+        if (!tableBody) {
+            
+            const table = document.querySelector("table");
+            if (table) {
+                const tbody = document.createElement("tbody");
+                table.appendChild(tbody);
+                populateTable(tbody, data);
+            }
+        } else {
+            populateTable(tableBody, data);
+        }
+
+    } catch (error) {
+        console.error("Error loading tasks table:", error);
+    }
+}
+
+function populateTable(tbody, tasks) {
+    tbody.innerHTML = "";
+
+    if (tasks.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="9" style="text-align: center;">No tasks found. Create a new task!</td>
+            </tr>
+        `;
+        return;
+    }
+
+    tasks.forEach(task => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${task.task_id}</td>
+            <td>${task.task_title}</td>
+            <td>${task.teacher_name}</td>
+            <td>${task.course || "No Course"}</td>
+            <td>${task.priority}</td>
+            <td>${task.description}</td>
+            <td>${getStatusBadge(task.status)}</td>
+            <td>${task.admin_name}</td>
+            <td>
+                <a href="#" onclick="editTask(${task.id})" class="edit-btn">Edit ✏️</a>
+                <a href="#" onclick="deleteTaskFromAPI(${task.id})" class="delete-btn">Delete 🗑️</a>
+            </td>
+        `;
+
+        
+        if (task.status.toLowerCase() === 'overdue') {
+            row.style.background = "rgba(236, 72, 153, 0.12)";
+            row.style.borderLeft = "3px solid rgba(236, 72, 153, 0.6)";
+        }
+
+        tbody.appendChild(row);
+    });
+}
+
+function getStatusBadge(status) {
+    const statusLower = status.toLowerCase();
+    switch(statusLower) {
+        case 'completed':
+            return 'Completed ✅';
+        case 'pending':
+            return 'Pending ⏳';
+        case 'in_progress':
+            return 'In Progress 🔄';
+        case 'overdue':
+            return 'Overdue ⚠️';
+        default:
+            return status;
+    }
+}
+
+// Delete 
+async function deleteTaskFromAPI(taskId) {
+    if (confirm("Are you sure you want to delete this task?")) {
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/tasks/${taskId}/`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                alert("✅ Task deleted successfully!");
+                loadTasksTable(); // إعادة تحميل الجدول
+            } else {
+                alert("❌ Failed to delete task.");
+            }
+        } catch (error) {
+            console.error("Error deleting task:", error);
+            alert("❌ Network error. Please try again.");
+        }
+    }
+}
+
+function editTask(taskId) {
+    window.location.href = `edit-task.html?id=${taskId}`;
+}
+
+

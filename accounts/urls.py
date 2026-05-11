@@ -13,6 +13,8 @@ urlpatterns = [
     path('data/<str:subject>/', views.update_task, name='update_task'),
     path('tasks/', TaskView.as_view(),name='tasks'),
     path("dashboard-stats/", DashboardStats.as_view()),
+    #Adham
+    path('tasks/<int:pk>/', views.task_detail, name='task_detail'),
 ]
 #kenzy
 # from django.urls import path

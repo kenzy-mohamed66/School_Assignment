@@ -131,9 +131,22 @@ if (taskForm) {
                 }
             );
 
-            const result = await response.json();
+            if (response.ok) {
+                const result = await response.json();
+                console.log("Task added:", result);
+                alert("✅ Task added successfully!");
+                
+                
+                window.location.href = "view_created_task.html";
+            } else {
+                const error = await response.json();
+                console.error("Error:", error);
+                alert("❌ Failed to add task. Please check the form fields.");
+            }
 
-            console.log("Task added:", result);
+            // const result = await response.json();
+
+            // console.log("Task added:", result);
 
         } catch (error) {
 
@@ -202,8 +215,18 @@ async function loadTasksTable() {
             const row = document.createElement("tr");
 
             row.innerHTML = `
+                <td>${task.task_id}</td>
+                <td>${task.task_title}</td>
+                <td>${task.teacher_name}</td>
                 <td>${task.course || "No Course"}</td>
+                <td>${task.priority}</td>
+                <td>${task.description}</td>
                 <td>${task.status}</td>
+                <td>${task.admin_name}</td>
+                <td>
+                    <a href="#" onclick="editTask(${task.id})" class="edit-btn">Edit ✏️</a>
+                    <a href="#" onclick="deleteTask(${task.id})" class="delete-btn">Delete 🗑️</a>
+                </td>
             `;
 
             tableBody.appendChild(row);

@@ -140,3 +140,27 @@ class DashboardStats(APIView):
             "in_progress": in_progress_tasks,
             "completion_rate": round(completion_rate, 1)
         })
+
+    # Adham
+
+@api_view(['PUT', 'DELETE' , 'GET'])
+
+def task_detail(request, pk):
+    try:
+        task = Task_admin.objects.get(pk=pk)
+    except Task_admin.DoesNotExist:
+        return Response({'error': 'Task not found'}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'DELETE':
+        task.delete()
+        return Response({'message': 'Task deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+    
+    elif request.method == 'PUT':
+        serializer = TaskSerializer_admin(task, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'GET':
+        serializer = TaskSerializer_admin(task)
+        return Response(serializer.data)
