@@ -164,3 +164,40 @@ def task_detail(request, pk):
     elif request.method == 'GET':
         serializer = TaskSerializer_admin(task)
         return Response(serializer.data)
+    
+from .models import ContactMessage
+from .serializers import ContactMessageSerializer
+
+class ContactView(APIView):
+    def post(self, request):
+        serializer = ContactMessageSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Message sent successfully'}, status=201)
+        return Response(serializer.errors, status=400)
+
+class ProfileView(APIView):
+    def get(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
+        except User.DoesNotExist:
+            return Response({'error': 'User not found'}, status=404)
+
+    def patch(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return Response({'error': 'User not found'}, status=404)
+
+        data = request.data.copy()
+        if 'password' in data:
+            hashed = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
+            data['password'] = hashed.decode('utf-8')
+
+        serializer = UserSerializer(user, data=data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Profile updated successfully'})
+        return Response(serializer.errors, status=400)

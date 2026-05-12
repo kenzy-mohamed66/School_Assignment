@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from .models import User
-from .models import Task
-from .models import Task_admin
+from .models import User, Task, Task_admin, ContactMessage
 
 # Mariam
 class UserSerializer(serializers.ModelSerializer):
@@ -32,3 +30,9 @@ class TaskSerializer_admin(serializers.ModelSerializer):
     class Meta:
         model = Task_admin
         fields = '__all__'
+
+class ContactMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactMessage
+        fields = ['name', 'email', 'phone', 'message', 'sent_at']
+        read_only_fields = ['sent_at']
