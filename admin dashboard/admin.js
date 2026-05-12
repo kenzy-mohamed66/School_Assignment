@@ -214,19 +214,24 @@ async function loadTasksTable() {
 
             const row = document.createElement("tr");
 
+            let statusDisplay = "";
+
+            if (task.status === "completed") {
+                statusDisplay = "✅ Completed";
+            } 
+            else if (task.status === "pending") {
+                statusDisplay = "⏳ Pending";
+            } 
+            else if (task.status === "in_progress") {
+                statusDisplay = "🚧 In Progress";
+            } 
+            else {
+                statusDisplay = task.status;
+            }
+
             row.innerHTML = `
-                <td>${task.task_id}</td>
-                <td>${task.task_title}</td>
-                <td>${task.teacher_name}</td>
                 <td>${task.course || "No Course"}</td>
-                <td>${task.priority}</td>
-                <td>${task.description}</td>
-                <td>${task.status}</td>
-                <td>${task.admin_name}</td>
-                <td>
-                    <a href="#" onclick="editTask(${task.id})" class="edit-btn">Edit ✏️</a>
-                    <a href="#" onclick="deleteTask(${task.id})" class="delete-btn">Delete 🗑️</a>
-                </td>
+                <td>${statusDisplay}</td>
             `;
 
             tableBody.appendChild(row);
