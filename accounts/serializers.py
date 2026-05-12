@@ -31,6 +31,7 @@ class TaskSerializer_admin(serializers.ModelSerializer):
         model = Task_admin
         fields = '__all__'
 
+# Hazem
 class ContactMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactMessage

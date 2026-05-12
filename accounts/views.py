@@ -14,6 +14,9 @@ from .serializers import TaskSerializer
 from .models import Task_admin
 from .serializers import TaskSerializer_admin
 
+from .models import ContactMessage
+from .serializers import ContactMessageSerializer
+
 # Mariam
 class SignupView(APIView):
     def post(self, request):
@@ -141,7 +144,7 @@ class DashboardStats(APIView):
             "completion_rate": round(completion_rate, 1)
         })
 
-    # Adham
+# Adham
 
 @api_view(['PUT', 'DELETE' , 'GET'])
 
@@ -165,9 +168,10 @@ def task_detail(request, pk):
         serializer = TaskSerializer_admin(task)
         return Response(serializer.data)
     
-from .models import ContactMessage
-from .serializers import ContactMessageSerializer
+# from .models import ContactMessage
+# from .serializers import ContactMessageSerializer
 
+# Hazem
 class ContactView(APIView):
     def post(self, request):
         serializer = ContactMessageSerializer(data=request.data)
