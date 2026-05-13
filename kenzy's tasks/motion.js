@@ -121,6 +121,22 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
+// Filter function
+function filterTable() {
+    const priValue = document.getElementById('priority')?.value?.toLowerCase();
+    const subValue = document.getElementById('Subjects')?.value?.toLowerCase();
+
+    document.querySelectorAll('#task-tbody tr').forEach(row => {
+        const rowPriority = row.dataset.priority?.toLowerCase();
+        const rowSubject  = row.dataset.subject?.toLowerCase();
+
+        const matchPri = !priValue || priValue === 'all' || rowPriority === priValue;
+        const matchSub = !subValue || subValue === 'all' || rowSubject  === subValue;
+
+        row.style.display = matchPri && matchSub ? '' : 'none';
+    });
+}
+
 // ── Save status to backend ───────────────
 async function saveStatus() {
     const subject   = document.getElementById('modal').dataset.current;

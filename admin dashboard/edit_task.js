@@ -170,7 +170,7 @@ function populateTable(tbody, tasks) {
             <td>${task.admin_name}</td>
             <td>
                 <a href="edit-task.html?id=${task.id}" class="edit-btn">Edit</a>
-                <a href="#" onclick="deleteTaskFromAPI(${task.id})" class="delete-btn">Delete</a>
+                <a onclick="deleteTaskFromAPI(${task.id}, this.closest('tr'))" style="cursor:pointer;">Delete</a>
             </td>
         `;
 
@@ -197,7 +197,7 @@ function getStatusBadge(status) {
 }
 
 // ── Delete ──
-async function deleteTaskFromAPI(taskId) {
+async function deleteTaskFromAPI(taskId, rowElement) { 
     if (!confirm('Are you sure you want to delete this task?')) return;
 
     try {
@@ -206,8 +206,9 @@ async function deleteTaskFromAPI(taskId) {
         });
 
         if (response.ok) {
+            rowElement.remove();  // removes row instantly 
             alert('Task deleted successfully!');
-            await loadDropdown(); // refresh both dropdown and table
+            await loadDropdown(); 
         } else {
             alert('Failed to delete task.');
         }
