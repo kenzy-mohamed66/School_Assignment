@@ -31,7 +31,7 @@ if (username&& greet) {
 }
 
 function clearform() {
-  alert("Form cleared 🧹");
+  alert("Form cleared");
 }
 
 
@@ -56,7 +56,7 @@ if (dueDateInput) {
     today.setHours(0, 0, 0, 0);
 
     if (chosen < today) {
-      alert("⚠️ Warning: The due date you selected is in the past!");
+      alert("Warning: The due date you selected is in the past!");
       dueDateInput.value = ""; 
       dateIsValid = false;     
     } else {
@@ -73,7 +73,7 @@ if (formo) {
    
     if (dueDateInput) {
       if (dueDateInput.value === "") {
-        alert("❌ Please select a due date!");
+        alert("Please select a due date!");
         dueDateInput.focus();
         return;
       }
@@ -83,7 +83,7 @@ if (formo) {
       today.setHours(0, 0, 0, 0);
 
       if (chosen < today) {
-        alert("❌ Please select a valid due date!");
+        alert("Please select a valid due date!");
         dueDateInput.focus();
         return;
       }
@@ -92,8 +92,8 @@ if (formo) {
    
     let btn = document.getElementById("submitBtn");
     btn.style.backgroundColor = "orange";
-    btn.value = "Saving... ⏳";
-    setTimeout(() => { btn.style.backgroundColor = "#22c55e"; btn.value = "Saved ✔️"; }, 1000);
+    btn.value = "Saving...";
+    setTimeout(() => { btn.style.backgroundColor = "#22c55e"; btn.value = "Saved"; }, 1000);
     setTimeout(() => { btn.value = "Submit"; btn.style.backgroundColor = ""; }, 3000);
   });
 }
@@ -134,7 +134,7 @@ if (taskForm) {
             if (response.ok) {
                 const result = await response.json();
                 console.log("Task added:", result);
-                alert("✅ Task added successfully!");
+                alert("Task added successfully!");
                 
                 
                 window.location.href = "view_created_task.html";
@@ -177,11 +177,10 @@ async function loadDashboard() {
         const completionRate = document.getElementById("completion-rate");
 
         if (teachers) teachers.innerText = data.teachers;
-        if (courses) courses.innerText = data.courses;   // ✅ ADD THIS
+        if (courses) courses.innerText = data.courses;
         if (assignments) assignments.innerText = data.assignments;
         if (completed) completed.innerText = data.completed;
-        if (pending) pending.innerText = data.pending;
-        if (overdue) overdue.innerText = data.overdue;
+        if (pending) pending.innerText = data.in_progress;        if (overdue) overdue.innerText = data.overdue;
 
         if (completionRate) {
             completionRate.innerText = data.completion_rate + "%";
@@ -214,16 +213,13 @@ async function loadTasksTable() {
 
             const row = document.createElement("tr");
 
-            let statusDisplay = "";
+            let statusDisplay = task.status;
 
             if (task.status === "completed") {
-                statusDisplay = "✅ Completed";
+                statusDisplay = "Completed";
             } 
-            else if (task.status === "pending") {
-                statusDisplay = "⏳ Pending";
-            } 
-            else if (task.status === "in_progress") {
-                statusDisplay = "🚧 In Progress";
+            else if (task.status === "In Progress" || task.status === "in_progress") {
+                statusDisplay = "In Progress";
             } 
             else {
                 statusDisplay = task.status;

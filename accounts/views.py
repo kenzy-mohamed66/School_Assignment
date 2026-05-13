@@ -55,13 +55,6 @@ class LoginView(APIView):
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 #kenzy
-# from django.http import JsonResponse
-# from django.views.decorators.csrf import csrf_exempt
-# from rest_framework.decorators import api_view
-# from rest_framework.response import Response
-# from rest_framework import status
-# from .models import Task
-# from .serializers import TaskSerializer
 
 @api_view(['GET'])
 def get_data(request):
@@ -112,22 +105,17 @@ class TaskView(APIView):
 
         return Response(serializer.errors, status=400)
     
-
 class DashboardStats(APIView):
-
     def get(self, request):
-
         all_tasks = Task_admin.objects.all()
-
         total_assignments = all_tasks.count()
-
         completed_tasks = all_tasks.filter(status__iexact="completed").count()
-
-        pending_tasks = all_tasks.filter(status__iexact="pending").count()
-
+        
+        # Merge "pending" and "in_progress" into one "in_progress" count
+        in_progress_tasks = all_tasks.filter(status__in=["pending", "in_progress"]).count()
+        
+        # Optional: Keep overdue separate or merge as needed
         overdue_tasks = all_tasks.filter(status__iexact="overdue").count()
-
-        in_progress_tasks = all_tasks.filter(status__iexact="in_progress").count()
 
         completion_rate = 0
         if total_assignments > 0:
@@ -138,9 +126,8 @@ class DashboardStats(APIView):
             "courses": Task_admin.objects.values("course").distinct().count(),
             "assignments": total_assignments,
             "completed": completed_tasks,
-            "pending": pending_tasks,
+            "in_progress": in_progress_tasks, # This now includes the 2 pending items
             "overdue": overdue_tasks,
-            "in_progress": in_progress_tasks,
             "completion_rate": round(completion_rate, 1)
         })
 
@@ -168,8 +155,7 @@ def task_detail(request, pk):
         serializer = TaskSerializer_admin(task)
         return Response(serializer.data)
     
-# from .models import ContactMessage
-# from .serializers import ContactMessageSerializer
+
 
 # Hazem
 class ContactView(APIView):

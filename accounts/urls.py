@@ -18,11 +18,3 @@ urlpatterns = [
     path('contact/', ContactView.as_view(), name='contact'),
     path('profile/<str:username>/', ProfileView.as_view(), name='profile'),
 ]
-#kenzy
-# from django.urls import path
-# from . import views
-# urlpatterns = [
-#     path('data/',            views.get_data,     name='get_data'),
-#     path('data/<str:subject>/', views.update_task, name='update_task'),
-#     path('tasks/', TaskView.as_view()),
-# ]
