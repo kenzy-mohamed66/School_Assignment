@@ -37,6 +37,12 @@ class Task(models.Model):
 
 #jana
 class Task_admin(models.Model):
+    STATUS_CHOICES = [
+        ('in_progress', 'In Progress'),
+        ('completed',   'Completed'),
+        ('overdue',     'Overdue'),
+    ]
+
     task_id = models.CharField(max_length=100)
     task_title = models.CharField(max_length=200)
     teacher_name = models.CharField(max_length=100)

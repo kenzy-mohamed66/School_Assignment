@@ -29,22 +29,6 @@
   </span>
 
 </nav>      
-   <!-- <nav>
-  <span class="nav-brand">EduTask</span>
-  <div class="nav-links">
-    <a href="teacher_dashboard.html" class="active">Dashboard</a>
-    <a href="task_details.html">Task Details</a>
-    <a href="../Completed Tasks/assignment.html">Completed Tasks</a>
-    <a href="../HOME_PAGE/HOME.html">Home</a>
-    <a href="../Contact Us Page/Contact_Us.html"> Contact</a>
-    <a href="../About_us/about_us.html">About Us</a>
-    <a href="../Profile Page/Profile.html">Profile</a>
-  </div>
-  <div class="nav-right">
-    Logged in as: <strong>Teacher: Dr. ...</strong>
-    <a href="../SignUp_Login/Login.html">Logout</a>
-  </div>
-</nav> -->
  
 <main>
   <div class="page-header">
@@ -67,18 +51,10 @@
     </div>
     <div class="filter-group">
       <label for="Subjects">Subject:</label>
-      <select id="Subjects" onchange="filterTable()">
+      <!-- ✅ Empty - filled by JS -->
+        <select id="Subjects" onchange="filterTable()">
         <option value="all">All</option>
-        <option value="Math">Math</option>
-        <option value="Physics">Physics</option>
-        <option value="Chemistry">Chemistry</option>
-        <option value="Biology">Biology</option>
-        <option value="French">French</option>
-        <option value="German">German</option>
-        <option value="Italian">Italian</option>
-        <option value="Arabic">Arabic</option>
-        <option value="English">English</option>
-      </select>
+</select>
     </div>
   </div>
  
@@ -93,61 +69,8 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr data-subject="Math" data-priority="High">
-          <td class="subject-name">Math</td>
-          <td><span class="badge badge-high">High</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('Math')">View Details</button></td>
-        </tr>
-        <tr data-subject="Physics" data-priority="High">
-          <td class="subject-name">Physics</td>
-          <td><span class="badge badge-high">High</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('Physics')">View Details</button></td>
-        </tr>
-        <tr data-subject="Chemistry" data-priority="High">
-          <td class="subject-name">Chemistry</td>
-          <td><span class="badge badge-high">High</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('Chemistry')">View Details</button></td>
-        </tr>
-        <tr data-subject="Biology" data-priority="High">
-          <td class="subject-name">Biology</td>
-          <td><span class="badge badge-high">High</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('Biology')">View Details</button></td>
-        </tr>
-        <tr data-subject="French" data-priority="Medium">
-          <td class="subject-name">French</td>
-          <td><span class="badge badge-medium">Medium</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('French')">View Details</button></td>
-        </tr>
-        <tr data-subject="German" data-priority="High">
-          <td class="subject-name">German</td>
-          <td><span class="badge badge-high">High</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('German')">View Details</button></td>
-        </tr>
-        <tr data-subject="Italian" data-priority="High">
-          <td class="subject-name">Italian</td>
-          <td><span class="badge badge-high">High</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('Italian')">View Details</button></td>
-        </tr>
-        <tr data-subject="Arabic" data-priority="High">
-          <td class="subject-name">Arabic</td>
-          <td><span class="badge badge-high">High</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('Arabic')">View Details</button></td>
-        </tr>
-        <tr data-subject="English" data-priority="High">
-          <td class="subject-name">English</td>
-          <td><span class="badge badge-high">High</span></td>
-          <td><span class="badge badge-progress">In Progress</span></td>
-          <td><button class="btn-details" onclick="openModal('English')">View Details</button></td>
-        </tr>
+      <tbody id="task-tbody">
+    <!-- filled by JS -->
       </tbody>
     </table>
   </div>
