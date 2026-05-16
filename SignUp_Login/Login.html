@@ -34,7 +34,31 @@
                     <input class="btn" type="submit" value="Login">
                 </div>
 
+                <!-- Forgot Password Link -->
+                 <p class="link">
+                    <a href="#" onclick="showForgotPassword()">Forgot Password?</a>
+                </p>
+
             </form>
+
+            <!-- Forgot Password Form (hidden by default) -->
+            <div id="forgot-form" style="display:none;">
+                <h1>Reset Password</h1>
+                <div class="inputs">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="reset-username" placeholder="Enter your username">
+                </div>
+                <div class="inputs">
+                    <i class="fas fa-eye"></i>
+                    <input type="password" id="reset-password" placeholder="Enter new password">
+                </div>
+                <div class="buttons">
+                    <input class="btn" type="button" value="Reset Password" onclick="resetPassword()">
+                </div>
+                <p class="link">
+                    <a href="Login.html" onclick="showLogin()">Back to Login</a>
+                </p>
+            </div>
 
             <p class="link">
                 Do not have an account?

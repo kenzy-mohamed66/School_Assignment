@@ -137,6 +137,34 @@ function togglePassword(icon) {
     }
 }
 
+function showForgotPassword() {
+    document.getElementById('forgot-form').style.display = 'block';
+    document.getElementById('login-form').style.display = 'none';
+    document.querySelector('.form-box h1').style.display = 'none'; // hides "Login" title
+}
+
+async function resetPassword() {
+    const username = document.getElementById('reset-username').value;
+    const password = document.getElementById('reset-password').value;
+
+    const response = await fetch(`http://127.0.0.1:8000/api/profile/${username}/`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: password })
+    });
+
+    if (response.ok) {
+        alert('Password reset successfully! Please login.');
+        document.getElementById('forgot-form').style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
+        document.querySelector('.form-box h1').style.display = 'block'; // shows "Login" title back
+    } 
+    
+    else {
+        alert('Username not found!');
+    }
+}
+
 function statusColor(input, color) {
 
     input.parentElement.style.borderBottom = `1px solid ${color}`;
