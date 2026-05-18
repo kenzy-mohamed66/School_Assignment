@@ -73,24 +73,14 @@ async function loadProfile() {
     const data     = await response.json();
 
     if (response.ok) {
-      // ملّي الـ fields بالبيانات الجاية من الداتابيز
-      document.getElementById('email').value = data.email || "";
+      document.getElementById('email').value    = data.email      || "";
+      document.getElementById('fname').value    = data.first_name || "";  // ✅
+      document.getElementById('lname').value    = data.last_name  || "";  // ✅
+      document.getElementById('jobtitle').value = data.job_title  || "";  // ✅
 
-      // الاسم: لو فيه مسافة نقسّمه لـ first و last
-      const nameParts = (data.username || "").split(" ");
-      document.getElementById('fname').value = nameParts[0] || data.username || "";
-      document.getElementById('lname').value = nameParts[1] || "";
-
-      // اختار الـ role card الصح
       selectRole(data.role || "teacher");
-
-      // حدّث الـ sidebar
       updateSidebar();
-
-    } else {
-      console.error("فشل تحميل البروفايل:", data);
     }
-
   } catch (error) {
     console.error("مش قادر يوصل للسيرفر:", error);
   }
@@ -171,11 +161,10 @@ function selectRole(role) {
 // ============================================
 
 async function saveProfile() {
-  const newPass    = document.getElementById('new-pass').value.trim();
+  const newPass     = document.getElementById('new-pass').value.trim();
   const confirmPass = document.getElementById('con-pass').value.trim();
-  const curPass    = document.getElementById('cur-pass').value.trim();
+  const curPass     = document.getElementById('cur-pass').value.trim();
 
-  // لو كتب باسورد جديد، تحقق منه
   if (newPass || confirmPass) {
     if (newPass.length < 8) {
       showMessage("❌ الباسورد الجديد لازم يكون 8 حروف على الأقل.", false);
@@ -191,16 +180,17 @@ async function saveProfile() {
     }
   }
 
-  // الـ role المختار
   const selectedRole = document.querySelector('.role-card.selected').id.replace('card-', '');
 
-  // البيانات اللي هتتبعت
+  // ✅ بنبعت الحقول الجديدة
   const dataToSend = {
-    email: document.getElementById('email').value.trim(),
-    role:  selectedRole,
+    email:      document.getElementById('email').value.trim(),
+    role:       selectedRole,
+    first_name: document.getElementById('fname').value.trim(),
+    last_name:  document.getElementById('lname').value.trim(),
+    job_title:  document.getElementById('jobtitle').value.trim(),
   };
 
-  // لو في باسورد جديد ضيفه
   if (newPass) {
     dataToSend.password = newPass;
   }
@@ -215,19 +205,22 @@ async function saveProfile() {
     const result = await response.json();
 
     if (response.ok) {
-      // لو الـ role اتغير، حدّثه في الـ localStorage
       localStorage.setItem("role", selectedRole);
-
-      // امسح حقول الباسورد
+      
+      const firstName = document.getElementById('fname').value.trim();
+      const lastName  = document.getElementById('lname').value.trim();
+      const fullName  = (firstName + ' ' + lastName).trim();
+      if (fullName) {
+        localStorage.setItem("display_name", fullName);
+      }
+      
       document.getElementById('cur-pass').value = "";
       document.getElementById('new-pass').value = "";
       document.getElementById('con-pass').value = "";
-
       showMessage("✓ تم حفظ التغييرات بنجاح!", true);
     } else {
       showMessage("❌ حصل خطأ: " + JSON.stringify(result), false);
     }
-
   } catch (error) {
     showMessage("❌ مش قادر يوصل للسيرفر.", false);
   }

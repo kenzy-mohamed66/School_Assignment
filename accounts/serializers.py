@@ -5,7 +5,8 @@ from .models import User, Task, Task_admin, ContactMessage
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password', 'role']
+        fields = ['id', 'username', 'email', 'password', 'role', 'first_name', 'last_name', 'job_title']
+        # The last 3 files have been added by Hazem.
 
     def validate_password(self, value):
         if len(value) < 8:

@@ -15,6 +15,11 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='teacher')
 
+    # A new fields Have been added by Hazem to Update Profile page in DB
+    first_name = models.CharField(max_length=100, blank=True, default='')
+    last_name  = models.CharField(max_length=100, blank=True, default='')
+    job_title  = models.CharField(max_length=100, blank=True, default='')
+
     # Method return string representation of the User object, useful for debugging and admin interface
     def __str__(self):
         return self.username

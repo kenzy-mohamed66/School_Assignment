@@ -21,13 +21,13 @@ document.querySelector(".log").addEventListener("click", function(e) {
   }
 });
 
-//for user greeting
-const username = localStorage.getItem("username");
-
+//for user greeting (A small Update done by Hazem)
+const username    = localStorage.getItem("username");
+const displayName = localStorage.getItem("display_name") || username; 
 const greet = document.querySelector(".greet");
 
-if (username&& greet) {
-    greet.innerHTML = `Welcome Back,<br>${username}`;
+if (greet) {
+  greet.innerHTML = `Welcome Back,<br>${displayName}`;
 }
 
 function clearform() {
