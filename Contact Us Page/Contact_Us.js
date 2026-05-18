@@ -4,32 +4,32 @@
 
 const API = "http://127.0.0.1:8000/api";
 
-// بياخد الـ username والـ role من الـ localStorage
+// gets the username and role from localStorage
 const username = localStorage.getItem("username");
 const role     = localStorage.getItem("role");
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // لو مفيش يوزر مسجل دخول، رجّعه لصفحة اللوجين
+  // if no user is logged in, redirect to the login page
   if (!username) {
     window.location.href = "../SignUp_Login/Login.html";
     return;
   }
 
-  // اضبط الـ navbar حسب الـ role
+  // set up the navbar based on the role
   setupNavbar();
 
-  // سجّل الـ form submit
+  // register the form submit
   setupContactForm();
 });
 
 
 // ============================================
-//  NAVBAR - اضبط اللينكات حسب الـ role
+//  NAVBAR - set the links based on role
 // ============================================
 
 function setupNavbar() {
-  // لينك الـ Dashboard بيتغير حسب الدور
+  // dashboard link changes based on the role
   const dashboardLink = document.querySelector('a.middle[href*="dashboard"]');
   if (dashboardLink) {
     if (role === "admin") {
@@ -39,7 +39,7 @@ function setupNavbar() {
     }
   }
 
-  // الروابط دي ظاهرة للأدمن بس
+  // these links are visible to admin only
   const adminOnlyLinks = document.querySelectorAll('a.middle[href*="add-task"], a.middle[href*="edit-task"], a.middle[href*="view_created_task"]');
   adminOnlyLinks.forEach(link => {
     if (role !== "admin") {
@@ -47,7 +47,7 @@ function setupNavbar() {
     }
   });
 
-  // Active class على الـ navbar
+  // Active class on the navbar
   document.querySelectorAll('.middle').forEach(link => {
     if (link.href === window.location.href) {
       link.classList.add('active');
@@ -57,13 +57,13 @@ function setupNavbar() {
 
 
 // ============================================
-//  CONTACT FORM - ابعت البيانات للـ API
+//  CONTACT FORM - send data to the API
 // ============================================
 
 function setupContactForm() {
   const contactForm = document.querySelector('.contact-form form');
 
-  // إنشاء مربع الرسالة
+  // create the message box
   const messageBox = document.createElement('div');
   messageBox.className = 'form-message';
   messageBox.style.cssText = "margin-top:1rem; padding:12px 16px; border-radius:14px; display:none; font-size:0.95rem;";
@@ -77,23 +77,23 @@ function setupContactForm() {
     const phone   = document.getElementById('phone').value.trim();
     const message = document.getElementById('message').value.trim();
 
-    // تحقق من الحقول
+    // validate the fields
     if (!name || !email || !phone || !message) {
-      showMessage(messageBox, 'من فضلك املأ كل الحقول.', false);
+      showMessage(messageBox, 'Please fill in all fields.', false);
       return;
     }
 
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      showMessage(messageBox, 'الإيميل غير صحيح.', false);
+      showMessage(messageBox, 'Invalid email.', false);
       return;
     }
 
     if (!/^\d{11}$/.test(phone)) {
-      showMessage(messageBox, 'رقم التليفون لازم يكون 11 رقم.', false);
+      showMessage(messageBox, 'Phone number must be 11 digits.', false);
       return;
     }
 
-    // ابعت البيانات للـ API
+    // send data to the API
     try {
       const response = await fetch(`${API}/contact/`, {
         method:  "POST",
@@ -105,13 +105,13 @@ function setupContactForm() {
 
       if (response.ok) {
         contactForm.reset();
-        showMessage(messageBox, '✓ تم إرسال رسالتك بنجاح!', true);
+        showMessage(messageBox, '✓ Your message has been sent successfully!', true);
       } else {
-        showMessage(messageBox, '❌ حصل خطأ: ' + JSON.stringify(result), false);
+        showMessage(messageBox, '❌ Error: ' + JSON.stringify(result), false);
       }
 
     } catch (error) {
-      showMessage(messageBox, '❌ مش قادر يوصل للسيرفر. تأكد إن الباك اند شغال.', false);
+      showMessage(messageBox, '❌ Cannot reach server. Make sure the backend is running.', false);
     }
   });
 }

@@ -4,35 +4,35 @@
 
 const API = "http://127.0.0.1:8000/api";
 
-// بياخد الـ username والـ role من الـ localStorage اللي اتحفظوا وقت الـ Login
+// gets the username and role from localStorage saved during login
 const username = localStorage.getItem("username");
 const role     = localStorage.getItem("role");
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // لو مفيش يوزر مسجل دخول، رجّعه لصفحة اللوجين
+  // if no user is logged in, redirect to the login page
   if (!username) {
     window.location.href = "../SignUp_Login/Login.html";
     return;
   }
 
-  // اضبط الـ navbar حسب الـ role
+  // set up the navbar based on the role
   setupNavbar();
 
-  // جيب بيانات اليوزر من الـ API
+  // load the user profile from the API
   loadProfile();
 
-  // سجّل الـ event listeners
+  // register the event listeners
   initEventListeners();
 });
 
 
 // ============================================
-//  NAVBAR - اضبط اللينكات حسب الـ role
+//  NAVBAR - set the links based on role
 // ============================================
 
 function setupNavbar() {
-  // لينك الـ Dashboard بيتغير حسب الدور
+  // dashboard link changes based on the role
   const dashboardLink = document.querySelector('a.middle[href*="dashboard"]');
   if (dashboardLink) {
     if (role === "admin") {
@@ -42,7 +42,7 @@ function setupNavbar() {
     }
   }
 
-  // الروابط دي ظاهرة للأدمن بس
+  // these links are visible to admin only
   const adminOnlyLinks = document.querySelectorAll('a.middle[href*="add-task"], a.middle[href*="edit-task"], a.middle[href*="view_created_task"]');
   adminOnlyLinks.forEach(link => {
     if (role !== "admin") {
@@ -50,7 +50,7 @@ function setupNavbar() {
     }
   });
 
-  // ضيف اسم اليوزر ودوره في الـ navbar لو فيه مكان ليه
+  // add the username and role to the navbar if there is room
   const userInfo = document.querySelector('.user-info');
   if (userInfo) {
     const nameSpan = document.createElement('span');
@@ -64,7 +64,7 @@ function setupNavbar() {
 
 
 // ============================================
-//  LOAD PROFILE - جيب بيانات اليوزر من الـ API
+//  LOAD PROFILE - get user data from API
 // ============================================
 
 async function loadProfile() {
@@ -82,7 +82,7 @@ async function loadProfile() {
       updateSidebar();
     }
   } catch (error) {
-    console.error("مش قادر يوصل للسيرفر:", error);
+    console.error("Cannot reach server:", error);
   }
 }
 
@@ -92,12 +92,12 @@ async function loadProfile() {
 // ============================================
 
 function initEventListeners() {
-  // حدّث الـ sidebar لما اليوزر يكتب
+  // update sidebar when user types
   document.getElementById('fname').addEventListener('input', updateSidebar);
   document.getElementById('lname').addEventListener('input', updateSidebar);
   document.getElementById('jobtitle').addEventListener('input', updateSidebar);
 
-  // اختيار الـ role
+  // role selection
   document.getElementById('card-admin').addEventListener('click', function () {
     selectRole('admin');
   });
@@ -105,10 +105,10 @@ function initEventListeners() {
     selectRole('teacher');
   });
 
-  // زرار الحفظ
+  // save button
   document.querySelector('.save-btn').addEventListener('click', saveProfile);
 
-  // الـ nav links الداخلية
+  // internal nav links
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(function (link) {
     link.addEventListener('click', function () {
@@ -117,7 +117,7 @@ function initEventListeners() {
     });
   });
 
-  // Active class على الـ navbar العلوي
+  // active class on the top navbar
   document.querySelectorAll('.middle').forEach(link => {
     if (link.href === window.location.href) {
       link.classList.add('active');
@@ -127,7 +127,7 @@ function initEventListeners() {
 
 
 // ============================================
-//  UPDATE SIDEBAR - لما اليوزر يكتب في الفورم
+//  UPDATE SIDEBAR - when the user types in the form
 // ============================================
 
 function updateSidebar() {
@@ -157,7 +157,7 @@ function selectRole(role) {
 
 
 // ============================================
-//  SAVE PROFILE - ابعت التغييرات للـ API
+//  SAVE PROFILE - send changes to the API
 // ============================================
 
 async function saveProfile() {
@@ -167,22 +167,22 @@ async function saveProfile() {
 
   if (newPass || confirmPass) {
     if (newPass.length < 8) {
-      showMessage("❌ الباسورد الجديد لازم يكون 8 حروف على الأقل.", false);
+      showMessage("❌ New password must be at least 8 characters.", false);
       return;
     }
     if (newPass !== confirmPass) {
-      showMessage("❌ الباسورد الجديد مش متطابق.", false);
+      showMessage("❌ New password does not match.", false);
       return;
     }
     if (!curPass) {
-      showMessage("❌ اكتب الباسورد الحالي الأول.", false);
+      showMessage("❌ Please enter your current password first.", false);
       return;
     }
   }
 
   const selectedRole = document.querySelector('.role-card.selected').id.replace('card-', '');
 
-  // ✅ بنبعت الحقول الجديدة
+  // ✅ sending updated fields
   const dataToSend = {
     email:      document.getElementById('email').value.trim(),
     role:       selectedRole,
@@ -217,12 +217,12 @@ async function saveProfile() {
       document.getElementById('cur-pass').value = "";
       document.getElementById('new-pass').value = "";
       document.getElementById('con-pass').value = "";
-      showMessage("✓ تم حفظ التغييرات بنجاح!", true);
+      showMessage("✓ Changes saved successfully!", true);
     } else {
-      showMessage("❌ حصل خطأ: " + JSON.stringify(result), false);
+      showMessage("❌ Error: " + JSON.stringify(result), false);
     }
   } catch (error) {
-    showMessage("❌ مش قادر يوصل للسيرفر.", false);
+    showMessage("❌ Cannot reach server.", false);
   }
 }
 
